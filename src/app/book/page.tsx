@@ -21,9 +21,8 @@ export default async function BookPage() {
     <PageShell>
       <div className="container page">
         <PageHeader
-          kicker="Book online"
-          title="Schedule your pup’s groom"
-          description="Choose a service and time. We’ll confirm your appointment and send a reminder before we arrive."
+          title="Book the van"
+          description="Start with your phone number in Moego. Mention color, coat type, or a nervous pet in the notes."
         />
         <div className="info-strip">
           <span>

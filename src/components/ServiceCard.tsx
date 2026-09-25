@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Icon } from '@/components/Icon'
 import { routes } from '@/lib/routes'
 import type { Service } from '@/lib/types'
 
@@ -10,45 +9,21 @@ type ServiceCardProps = {
 
 export function ServiceCard({ service, compact = false }: ServiceCardProps) {
   return (
-    <article className={`card service-card${service.featured ? ' is-featured' : ''}`}>
-      {service.featured && <span className="badge">Most popular</span>}
-      <div className="service-top">
+    <article className="service-row">
+      <div>
         <h3>{service.name}</h3>
-        <span className="price">{service.price}</span>
+        <p>{service.description}</p>
+        {!compact && service.includes.length > 0 && (
+          <p className="service-includes">{service.includes.join(' · ')}</p>
+        )}
       </div>
-      {service.duration && (
-        <p className="service-duration">
-          <Icon name="clock" size={14} />
-          {service.duration}
-        </p>
-      )}
-      <p className="service-description">{service.description}</p>
-
-      {!compact && service.includes.length > 0 && (
-        <ul className="check-list">
-          {service.includes.map((item) => (
-            <li key={item}>
-              <Icon name="check" size={16} />
-              {item}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {!compact && service.perfectFor.length > 0 && (
-        <div className="tag-row">
-          <span className="tag-label">Perfect for</span>
-          {service.perfectFor.map((item) => (
-            <span key={item} className="tag">
-              {item}
-            </span>
-          ))}
-        </div>
-      )}
-
-      <Link className={`btn ${service.featured ? 'btn-primary' : 'btn-soft'} btn-block`} href={routes.book}>
-        Book {service.name}
-      </Link>
+      <div className="service-row-meta">
+        <span className="price">{service.price}</span>
+        {service.duration ? <span className="muted">{service.duration}</span> : null}
+        <Link className="text-link" href={routes.book}>
+          Book
+        </Link>
+      </div>
     </article>
   )
 }

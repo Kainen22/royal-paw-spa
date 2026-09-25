@@ -27,9 +27,8 @@ export default async function ContactPage() {
     <PageShell>
       <div className="container page">
         <PageHeader
-          kicker="Contact"
-          title="Get in touch"
-          description="Questions about pricing, your dog’s coat, or whether we cover your neighborhood? Reach out any time."
+          title="Call or book"
+          description="Questions about coat, color, or whether I cover your street? Text, call, or start a booking."
         />
         <div className="grid-2">
           {items.map((item) => {

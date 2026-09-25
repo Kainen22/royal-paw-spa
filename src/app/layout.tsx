@@ -1,26 +1,35 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Fraunces, Source_Sans_3 } from 'next/font/google'
 import { getSiteName } from '@/lib/site'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-display',
+  axes: ['SOFT', 'WONK', 'opsz'],
+})
+
+const sourceSans = Source_Sans_3({
+  subsets: ['latin'],
+  variable: '--font-body',
+})
 
 const siteName = getSiteName()
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://royal-paw-spa.vercel.app'
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteName} | Mobile Dog Grooming`,
+    default: `${siteName} | Mobile grooming in Colorado Springs`,
     template: `%s | ${siteName}`,
   },
   description:
-    'Mobile dog grooming at your door. Baths, haircuts, nail trims, and spa add-ons in a fully equipped van. Book online.',
+    'Tanae’s mobile grooming van in Colorado Springs. Creative color, doodles, double coats, and cats — one pet at a time, in your driveway.',
   metadataBase: new URL(siteUrl),
   icons: { icon: '/favicon.svg' },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#ffffff',
+  themeColor: '#f6efe3',
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
@@ -28,7 +37,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${fraunces.variable} ${sourceSans.variable}`}>
       <body>{children}</body>
     </html>
   )

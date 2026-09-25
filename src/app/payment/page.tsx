@@ -25,7 +25,7 @@ export default async function PaymentPage() {
   return (
     <PageShell>
       <div className="container page">
-        <PageHeader kicker="Payment" title="Payment & policies" description={site.paymentIntro} />
+        <PageHeader title="Payment & policies" description={site.paymentIntro} />
         <div className="grid-3">
           {items.map((item) => (
             <article key={item.title} className="card info-card">
