@@ -27,7 +27,8 @@ Every save is already on GitHub. Named checkpoints:
 | Tag | What it is |
 | --- | --- |
 | `v1.0-launch` | First live site — lavender template, Moego, photos |
-| `v2.0-van-brand` | Current look — cream, gold, Fraunces, Tanae’s copy |
+| `v2.0-van-brand` | Cream, gold, Fraunces restyle (kept if we want it later) |
+| `v2.1-back-to-launch` | Current live look — same as v1, after reverting the restyle |
 
 See them on GitHub: [releases / tags](https://github.com/Kainen22/royal-paw-spa/tags)
 
@@ -37,4 +38,4 @@ To put the live site back on a checkpoint, tell me which tag and I can revert it
 git checkout v1.0-launch
 ```
 
-That only looks at the old files. To make the website go back to that version for real, we reset `main` to the tag and push. Ask first — that updates the live Vercel site.
+That only looks at the old files. To change the live site, tell me which tag — we revert with a new commit so nothing is lost.
