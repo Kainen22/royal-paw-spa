@@ -19,8 +19,9 @@ export default async function FAQPage() {
     <PageShell>
       <div className="container page page-narrow">
         <PageHeader
-          title="Before I pull up"
-          description="Water, parking, vaccines, and whether I do the rainbow ears."
+          kicker="FAQ"
+          title="Questions about mobile grooming"
+          description="Everything you need to know before we pull up."
         />
         <FAQSection faqs={faqs} />
       </div>

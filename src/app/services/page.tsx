@@ -21,10 +21,11 @@ export default async function ServicesPage() {
     <PageShell>
       <div className="container page">
         <PageHeader
-          title="What I book"
-          description="Prices start here and move with size, coat, and condition. I confirm before I start. Mention creative color when you book."
+          kicker="Services & pricing"
+          title="Grooming packages"
+          description="Final pricing depends on your dog’s size, coat type, and condition. We confirm your price before we start, so there are no surprises."
         />
-        <div className="service-list">
+        <div className="grid-2">
           {packages.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
@@ -34,7 +35,7 @@ export default async function ServicesPage() {
           <section className="section-tight">
             <div className="section-head">
               <h2>Add-ons</h2>
-              <p className="muted">Ask for these when you book a package.</p>
+              <p className="muted">Add any of these to a Bath & Brush or Full Groom.</p>
             </div>
             <ul className="card addon-list">
               {addons.map((addon) => (

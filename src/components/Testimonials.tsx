@@ -1,3 +1,4 @@
+import { Icon } from '@/components/Icon'
 import type { Testimonial } from '@/lib/types'
 
 type TestimonialsProps = {
@@ -5,33 +6,24 @@ type TestimonialsProps = {
 }
 
 export function Testimonials({ testimonials }: TestimonialsProps) {
-  const [featured, ...rest] = testimonials
-  if (!featured) return null
-
   return (
-    <section className="section">
-      <div className="container split-head">
-        <h2>What people tell me after a visit</h2>
+    <section className="section container">
+      <div className="section-head">
+        <p className="eyebrow">Reviews</p>
+        <h2>What pet parents say</h2>
       </div>
-      <div className="review-layout container">
-        <figure className="review-feature">
-          {featured.photo && <img src={featured.photo} alt="" />}
-          <blockquote>
-            <p>{featured.quote}</p>
-            <figcaption>— {featured.author}</figcaption>
-          </blockquote>
-        </figure>
-        <div className="review-stack">
-          {rest.map((item) => (
-            <blockquote key={item.id} className="review-plain">
-              <p>{item.quote}</p>
-              <footer>
-                — {item.author}
-                {item.pet ? `, ${item.pet}’s person` : ''}
-              </footer>
-            </blockquote>
-          ))}
-        </div>
+      <div className="grid-3">
+        {testimonials.map((item) => (
+          <figure key={item.id} className="card review">
+            <div className="stars" aria-label="5 out of 5 stars">
+              {Array.from({ length: 5 }, (_, i) => (
+                <Icon key={i} name="star" size={16} filled />
+              ))}
+            </div>
+            <blockquote>{item.quote}</blockquote>
+            <figcaption>{item.author}</figcaption>
+          </figure>
+        ))}
       </div>
     </section>
   )

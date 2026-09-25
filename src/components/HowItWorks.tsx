@@ -1,32 +1,37 @@
-const steps = [
+import { Icon, type IconName } from '@/components/Icon'
+
+const steps: Array<{ icon: IconName; title: string; body: string }> = [
   {
-    n: '01',
-    title: 'Book the van',
-    body: 'Pick a service and a window. Mention color, a doodle coat, or a nervous pet so I can plan the visit.',
+    icon: 'calendar',
+    title: 'Book online',
+    body: 'Pick your service and a time that works. It takes about two minutes, day or night.',
   },
   {
-    n: '02',
-    title: 'I pull into your driveway',
-    body: 'The van has its own water and power. You hand your pet to me — no kennel, no other barking dogs.',
+    icon: 'truck',
+    title: 'We pull up',
+    body: 'Our self-contained van parks at your home. No water or power needed from you.',
   },
   {
-    n: '03',
-    title: 'One groomer. One pet.',
-    body: 'I do the bath, the cut, the color if you asked for it. Then I walk them back to your door.',
+    icon: 'heart',
+    title: 'Happy pup, back at your door',
+    body: 'One groomer, one dog, zero kennel time. We hand them back fresh and calm.',
   },
 ]
 
 export function HowItWorks() {
   return (
-    <section className="section">
-      <div className="container split-head">
-        <h2>How a Royal Paw visit works</h2>
-        <p className="lead">No drop-off. No waiting room. The salon is the purple van with the jeweled paw on the side.</p>
+    <section className="section container">
+      <div className="section-head">
+        <p className="eyebrow">How it works</p>
+        <h2>Grooming without leaving home</h2>
       </div>
-      <ol className="steps-line container">
-        {steps.map((step) => (
-          <li key={step.n}>
-            <span className="step-n">{step.n}</span>
+      <ol className="steps">
+        {steps.map((step, index) => (
+          <li key={step.title} className="card step">
+            <span className="step-icon">
+              <Icon name={step.icon} size={22} />
+            </span>
+            <span className="step-number">Step {index + 1}</span>
             <h3>{step.title}</h3>
             <p>{step.body}</p>
           </li>

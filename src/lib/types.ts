@@ -39,8 +39,6 @@ export type Testimonial = {
   id: string
   quote: string
   author: string
-  pet?: string
-  photo?: string
 }
 
 export type PageContent = {

@@ -24,7 +24,7 @@ export default async function AboutPage() {
       <div className="container page">
         <div className="about-grid">
           <div>
-            <PageHeader title={site.aboutTitle} />
+            <PageHeader kicker="About us" title={site.aboutTitle} />
             <div className="about-copy">
               {site.aboutBody.split(/\n\s*\n/).map((paragraph) => (
                 <p key={paragraph.slice(0, 48)}>{paragraph}</p>

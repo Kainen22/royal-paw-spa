@@ -10,19 +10,21 @@ type CtaBandProps = {
 
 export function CtaBand({
   phone,
-  title = 'Want Tanae on your calendar?',
-  body = 'Book the van online, or call if you’d rather talk through coat, color, or a nervous pet first.',
+  title = 'Ready for a fresh, happy pup?',
+  body = 'Book online in about two minutes, or give us a call and we’ll find a time that works.',
 }: CtaBandProps) {
   return (
-    <section className="cta-plain">
-      <div className="container cta-plain-inner">
-        <h2>{title}</h2>
-        <p>{body}</p>
+    <section className="section container">
+      <div className="cta-band">
+        <div>
+          <h2>{title}</h2>
+          <p>{body}</p>
+        </div>
         <div className="btn-row">
-          <Link className="btn btn-gold" href={routes.book}>
-            Start booking
+          <Link className="btn btn-white" href={routes.book}>
+            Book online
           </Link>
-          <a className="btn btn-outline" href={toTelHref(phone)}>
+          <a className="btn btn-ghost-white" href={toTelHref(phone)}>
             Call {phone}
           </a>
         </div>

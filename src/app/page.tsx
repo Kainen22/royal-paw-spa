@@ -3,86 +3,60 @@ import { CtaBand } from '@/components/CtaBand'
 import { Gallery } from '@/components/Gallery'
 import { Hero } from '@/components/Hero'
 import { HowItWorks } from '@/components/HowItWorks'
+import { Icon } from '@/components/Icon'
 import { PageShell } from '@/components/PageShell'
+import { ServiceCard } from '@/components/ServiceCard'
 import { Testimonials } from '@/components/Testimonials'
 import { defaultTestimonials } from '@/lib/content'
 import { getPageContent } from '@/lib/notion'
 import { findPhoto, listGalleryPhotos } from '@/lib/photos'
 import { routes } from '@/lib/routes'
 
-const fallbackHeroPhoto = '/photos/hero.jpg'
+const fallbackHeroPhoto =
+  'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1200&q=80'
 
 export const revalidate = 300
 
 export default async function HomePage() {
   const { site, services } = await getPageContent()
-  const featured = services.filter((service) => service.featured)
+  const packages = services.filter((service) => service.category === 'package')
+  const highlighted = packages.filter((service) => service.featured)
+  const shown = (highlighted.length > 0 ? highlighted : packages).slice(0, 3)
 
   return (
     <PageShell>
       <Hero content={site} photo={findPhoto('hero') ?? fallbackHeroPhoto} />
-
-      <section className="signature">
-        <div className="container signature-grid">
-          <article>
-            <h2>Creative color</h2>
-            <p>
-              Rainbow ears, dipped tails, a little sparkle if you want it. Pet-safe color is part of
-              the job here, not a rare add-on I squeeze in.
-            </p>
-          </article>
-          <article>
-            <h2>Double coats &amp; doodles</h2>
-            <p>
-              Fleece, curls, and undercoat that blows twice a year. I take the time those coats
-              actually need — the reviews from double-coat households are why I keep saying yes to them.
-            </p>
-          </article>
-          <article>
-            <h2>Cats, too</h2>
-            <p>
-              Waterless or a real bath, nails, ears, and a cut if they’ll allow the dryer. No salon
-              chorus of barking dogs in the next kennel.
-            </p>
-          </article>
-        </div>
-      </section>
-
       <HowItWorks />
 
-      <section className="section">
-        <div className="container split-head">
-          <h2>The menu, starting prices</h2>
+      <section className="section container">
+        <div className="section-head section-head-row">
+          <div>
+            <p className="eyebrow">Services</p>
+            <h2>Popular packages</h2>
+          </div>
           <Link className="text-link" href={routes.services}>
-            Full list and add-ons
+            See all services & add-ons →
           </Link>
         </div>
-        <div className="container service-list">
-          {featured.map((service) => (
-            <article key={service.id} className="service-row">
-              <div>
-                <h3>{service.name}</h3>
-                <p>{service.description}</p>
-              </div>
-              <div className="service-row-meta">
-                <span className="price">{service.price}</span>
-                <Link className="text-link" href={routes.book}>
-                  Book
-                </Link>
-              </div>
-            </article>
+        <div className="grid-3">
+          {shown.map((service) => (
+            <ServiceCard key={service.id} service={service} compact />
           ))}
         </div>
       </section>
 
-      <section className="area-bleed">
-        <img src="/photos/gallery/10-van-wrap.jpg" alt="Royal Paw Spa van wrap" />
-        <div className="area-bleed-copy">
-          <h2>I come to you in Colorado Springs</h2>
-          <p>{site.serviceArea}</p>
-          <p>{site.hours}</p>
-          <Link className="btn btn-gold" href={routes.book}>
-            Check your address when you book
+      <section className="section container">
+        <div className="card area-card">
+          <span className="area-icon">
+            <Icon name="pin" size={24} />
+          </span>
+          <div>
+            <p className="eyebrow">Service area</p>
+            <h2>Grooming just around the corner</h2>
+            <p>{site.serviceArea}</p>
+          </div>
+          <Link className="btn btn-soft" href={routes.contact}>
+            Check your area
           </Link>
         </div>
       </section>

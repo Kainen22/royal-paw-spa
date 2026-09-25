@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { BrandMark } from '@/components/BrandMark'
 import { Icon } from '@/components/Icon'
 import { SocialLinks } from '@/components/SocialLinks'
 import { navLinks, routes } from '@/lib/routes'
@@ -39,7 +38,9 @@ export function Header({ phone }: HeaderProps) {
       <header className="site-header">
         <div className="container header-inner">
           <Link className="brand" href={routes.home}>
-            <BrandMark size={34} />
+            <span className="brand-mark">
+              <Icon name="paw" size={18} />
+            </span>
             <span className="brand-name">{siteName}</span>
           </Link>
 
@@ -48,7 +49,7 @@ export function Header({ phone }: HeaderProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`nav-link${isActive(link.href) ? ' is-active' : ''}`}
+                className={`nav-pill${isActive(link.href) ? ' is-active' : ''}`}
               >
                 {link.label}
               </Link>
