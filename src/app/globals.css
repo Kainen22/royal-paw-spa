@@ -16,6 +16,7 @@
   --font: var(--font-inter), system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --header-h: 64px;
   --tab-h: 64px;
+  --cursor-paw: url('/cursors/paw-32.png') 16 4, url('/cursors/paw.svg') 10 2, auto;
 }
 
 * {
@@ -33,6 +34,24 @@ body {
   font-family: var(--font);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  cursor: var(--cursor-paw);
+}
+
+a,
+button,
+summary,
+label,
+select,
+.btn,
+.icon-btn,
+.tab,
+[role='button'] {
+  cursor: var(--cursor-paw);
+}
+
+input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type='radio']),
+textarea {
+  cursor: text;
 }
 
 img {
@@ -130,7 +149,7 @@ p {
   font-weight: 600;
   font-size: 0.97rem;
   text-decoration: none;
-  cursor: pointer;
+  cursor: var(--cursor-paw);
   transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
   white-space: nowrap;
 }
@@ -370,7 +389,7 @@ p {
   border: 0;
   background: var(--surface-alt);
   color: var(--text);
-  cursor: pointer;
+  cursor: var(--cursor-paw);
 }
 
 /* Hero */
@@ -833,7 +852,7 @@ p {
   gap: 1rem;
   padding: 1.1rem 1.25rem;
   font-weight: 600;
-  cursor: pointer;
+  cursor: var(--cursor-paw);
   list-style: none;
 }
 
@@ -1081,7 +1100,7 @@ p {
     font-weight: 500;
     color: var(--muted);
     text-decoration: none;
-    cursor: pointer;
+    cursor: var(--cursor-paw);
   }
 
   .tab.is-active {
