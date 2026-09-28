@@ -42,6 +42,7 @@ export type Testimonial = {
   quote: string
   author: string
   source: ReviewSource
+  photos?: string[]
 }
 
 export type PageContent = {

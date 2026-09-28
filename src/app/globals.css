@@ -793,6 +793,75 @@ p {
   margin-top: auto;
 }
 
+.review-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  gap: 0.4rem;
+}
+
+.review-photos img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.review-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+}
+
+.review-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: var(--cursor-paw);
+}
+
+.review-filter.is-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.review-filter-count {
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+.review-source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: -0.5rem 0 1.5rem;
+}
+
+.review-source-links a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.review-source-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .review-links {
+    align-items: flex-start;
+  }
+}
+
 /* CTA */
 .cta-band {
   display: flex;
