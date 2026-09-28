@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { CtaBand } from '@/components/CtaBand'
 import { HowItWorks } from '@/components/HowItWorks'
 import { PageHeader } from '@/components/PageHeader'
-import { PageShell } from '@/components/PageShell'
+import { StatsBand } from '@/components/StatsBand'
 import { getPageContent } from '@/lib/notion'
 import { findPhoto } from '@/lib/photos'
 
@@ -40,6 +40,7 @@ export default async function AboutPage() {
           />
         </div>
       </div>
+      <StatsBand />
       <HowItWorks />
       <CtaBand phone={site.contactPhone} />
     </PageShell>

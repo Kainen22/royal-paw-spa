@@ -5,7 +5,7 @@ import { Hero } from '@/components/Hero'
 import { HowItWorks } from '@/components/HowItWorks'
 import { Icon } from '@/components/Icon'
 import { PageShell } from '@/components/PageShell'
-import { ServiceCard } from '@/components/ServiceCard'
+import { StatsBand } from '@/components/StatsBand'
 import { Testimonials } from '@/components/Testimonials'
 import { photoReviews } from '@/lib/reviews'
 import { getPageContent } from '@/lib/notion'
@@ -26,6 +26,7 @@ export default async function HomePage() {
   return (
     <PageShell>
       <Hero content={site} photo={findPhoto('hero') ?? fallbackHeroPhoto} />
+      <StatsBand />
       <HowItWorks />
 
       <section className="section container">
