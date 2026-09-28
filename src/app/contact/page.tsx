@@ -10,7 +10,7 @@ export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Call, email, or check our mobile grooming service area and hours.',
+  description: 'Call or check our mobile grooming service area and hours.',
 }
 
 export default async function ContactPage() {
@@ -18,7 +18,6 @@ export default async function ContactPage() {
 
   const items: Array<{ icon: IconName; label: string; value: string; href?: string }> = [
     { icon: 'phone', label: 'Call or text', value: site.contactPhone, href: toTelHref(site.contactPhone) },
-    { icon: 'mail', label: 'Email', value: site.contactEmail, href: `mailto:${site.contactEmail}` },
     { icon: 'pin', label: 'Service area', value: site.serviceArea },
     { icon: 'clock', label: 'Hours', value: site.hours },
   ]
@@ -59,7 +58,7 @@ export default async function ContactPage() {
         <div className="card contact-card social-card">
           <div>
             <span className="contact-label">Follow along</span>
-            <strong className="contact-value">Instagram, Facebook, and Google</strong>
+            <strong className="contact-value">Instagram, Facebook, TikTok, and Google</strong>
           </div>
           <SocialLinks labeled />
         </div>

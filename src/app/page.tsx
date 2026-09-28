@@ -55,7 +55,7 @@ export default async function HomePage() {
             <h2>Grooming just around the corner</h2>
             <p>{site.serviceArea}</p>
           </div>
-          <Link className="btn btn-soft" href={routes.contact}>
+          <Link className="btn btn-soft" href={routes.about}>
             Check your area
           </Link>
         </div>

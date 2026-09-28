@@ -29,7 +29,6 @@ export function Footer({ site, notionConnected }: FooterProps) {
         </nav>
         <div className="footer-contact">
           <a href={toTelHref(site.contactPhone)}>{site.contactPhone}</a>
-          <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
           <span>{site.hours}</span>
         </div>
       </div>
