@@ -1,4 +1,4 @@
-import type { FAQ, Service, SiteContent, Testimonial } from './types'
+import type { FAQ, Service, SiteContent } from './types'
 
 export const defaultSiteContent: SiteContent = {
   heroKicker: 'Luxury mobile grooming · We come to you',
@@ -198,23 +198,3 @@ export const defaultFaqs: FAQ[] = [
   },
 ]
 
-export const defaultTestimonials: Testimonial[] = [
-  {
-    id: '1',
-    quote:
-      'Tanae is absolutely perfect. Our doggie loves her and always comes in with a smile on his face and a wag in his tail.',
-    author: 'Julie',
-  },
-  {
-    id: '2',
-    quote:
-      'We lost our last groomer to Texas and have been very hesitant to find a new one. Folks with double coated pups know what I mean. Could not be happier with the grooming!',
-    author: 'Andra',
-  },
-  {
-    id: '3',
-    quote:
-      'Thank you so much for accommodating us on such short notice. Bailey looks beautiful and she’s so happy to have all that heavy hair off her.',
-    author: 'Erin',
-  },
-]

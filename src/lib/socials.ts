@@ -24,7 +24,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: 'Google',
-    href: 'https://www.google.com/search?q=Royal+Paw+Spa',
+    href: 'https://www.google.com/maps?cid=1328461908822745393',
     icon: 'google',
   },
 ]

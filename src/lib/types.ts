@@ -35,10 +35,13 @@ export type FAQ = {
   order: number
 }
 
+export type ReviewSource = 'google' | 'moego'
+
 export type Testimonial = {
   id: string
   quote: string
   author: string
+  source: ReviewSource
 }
 
 export type PageContent = {
