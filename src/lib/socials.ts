@@ -18,6 +18,11 @@ export const socialLinks: SocialLink[] = [
     icon: 'facebook',
   },
   {
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@tanaerosenberg',
+    icon: 'tiktok',
+  },
+  {
     label: 'Google',
     href: 'https://www.google.com/search?q=Royal+Paw+Spa',
     icon: 'google',
