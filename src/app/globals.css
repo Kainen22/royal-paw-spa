@@ -16,7 +16,7 @@
   --font: var(--font-inter), system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --header-h: 64px;
   --tab-h: 64px;
-  --cursor-paw: url('/cursors/paw-32.png') 16 4, url('/cursors/paw.svg') 10 2, auto;
+  --cursor-paw: url('/cursors/logo.png') 11 4, auto;
 }
 
 * {
@@ -68,12 +68,13 @@ textarea {
   position: fixed;
   top: 0;
   left: 0;
-  width: 44px;
-  height: 44px;
-  margin: -8px 0 0 -16px;
+  width: 22px;
+  height: 28px;
+  object-fit: contain;
+  margin: -4px 0 0 -11px;
   pointer-events: none;
   z-index: 100000;
-  filter: drop-shadow(0 1px 1px rgba(29, 20, 48, 0.25));
+  filter: drop-shadow(0 1px 1px rgba(29, 20, 48, 0.28));
 }
 
 img {

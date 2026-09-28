@@ -46,7 +46,7 @@ export function PawCursor() {
 
   return (
     <img
-      src="/cursors/paw.png"
+      src="/cursors/logo.png"
       alt=""
       aria-hidden
       className="paw-cursor"
