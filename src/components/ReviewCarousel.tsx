@@ -9,8 +9,7 @@ import type { Testimonial } from '@/lib/types'
 export function ReviewCarousel({ reviews }: { reviews: Testimonial[] }) {
   const scroller = useRef<HTMLDivElement>(null)
   const [galleryIndex, setGalleryIndex] = useState<number | null>(null)
-  const photoReviews = reviews.filter((review) => (review.photos?.length ?? 0) > 0)
-  const gallery = photoReviews.flatMap((review) =>
+  const gallery = reviews.flatMap((review) =>
     (review.photos ?? []).map((src) => ({ src, author: review.author })),
   )
 
@@ -22,7 +21,7 @@ export function ReviewCarousel({ reviews }: { reviews: Testimonial[] }) {
     node.scrollBy({ left: amount * direction, behavior: 'smooth' })
   }
 
-  if (photoReviews.length === 0) return null
+  if (reviews.length === 0) return null
 
   return (
     <div className="review-carousel">
@@ -35,7 +34,7 @@ export function ReviewCarousel({ reviews }: { reviews: Testimonial[] }) {
         <Icon name="chevronLeft" size={22} />
       </button>
       <div className="review-carousel-track" ref={scroller}>
-        {photoReviews.map((review) => (
+        {reviews.map((review) => (
           <div className="review-slide" key={review.id}>
             <ReviewCard
               review={review}

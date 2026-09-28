@@ -12,8 +12,14 @@ const filters: Array<{ id: Filter; label: string }> = [
   { id: 'moego', label: 'Moego' },
 ]
 
-export function ReviewBoard({ reviews }: { reviews: Testimonial[] }) {
-  const [filter, setFilter] = useState<Filter>('all')
+export function ReviewBoard({
+  reviews,
+  defaultFilter = 'all',
+}: {
+  reviews: Testimonial[]
+  defaultFilter?: Filter
+}) {
+  const [filter, setFilter] = useState<Filter>(defaultFilter)
 
   const shown = useMemo(
     () => (filter === 'all' ? reviews : reviews.filter((review) => review.source === filter)),

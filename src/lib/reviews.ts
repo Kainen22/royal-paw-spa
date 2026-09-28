@@ -127,8 +127,9 @@ export const allReviews: Testimonial[] = [
   },
 ]
 
+export const googleReviews = allReviews.filter((review) => review.source === 'google')
 export const featuredTestimonials = allReviews.filter((review) =>
   ['google-tanya-delfin', 'google-amber', 'google-alex'].includes(review.id),
 )
 
-export const photoReviews = allReviews.filter((review) => (review.photos?.length ?? 0) > 0)
+export const photoReviews = googleReviews.filter((review) => (review.photos?.length ?? 0) > 0)

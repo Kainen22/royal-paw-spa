@@ -8,9 +8,9 @@ import { getPageContent } from '@/lib/notion'
 import {
   allReviews,
   googleRating,
+  googleReviews,
   googleReviewsUrl,
   moegoReviewsUrl,
-  photoReviews,
 } from '@/lib/reviews'
 
 export const revalidate = 300
@@ -29,8 +29,8 @@ export default async function ReviewsPage() {
       <div className="container page">
         <PageHeader
           kicker="Reviews"
-          title="Google and Moego, in one place"
-          description={`${googleRating.score} stars from ${googleRating.count} Google reviews, plus client notes from Moego booking. Filter by channel or read them all.`}
+          title="Google reviews"
+          description={`${googleRating.score} stars from ${googleRating.count} Google reviews. Every written Google review we can show is here — swipe through them all, or open Google for the full list.`}
         />
         <p className="review-source-links">
           <a href={googleReviewsUrl} target="_blank" rel="noopener noreferrer">
@@ -40,9 +40,9 @@ export default async function ReviewsPage() {
             Open Moego reviews
           </a>
         </p>
-        <ReviewCarousel reviews={photoReviews} />
-        <h2 className="review-all-heading">All reviews</h2>
-        <ReviewBoard reviews={allReviews} />
+        <ReviewCarousel reviews={googleReviews} />
+        <h2 className="review-all-heading">All Google reviews</h2>
+        <ReviewBoard reviews={allReviews} defaultFilter="google" />
       </div>
       <CtaBand
         phone={site.contactPhone}

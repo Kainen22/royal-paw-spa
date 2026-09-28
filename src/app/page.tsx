@@ -8,7 +8,7 @@ import { PageShell } from '@/components/PageShell'
 import { ServiceCard } from '@/components/ServiceCard'
 import { StatsBand } from '@/components/StatsBand'
 import { Testimonials } from '@/components/Testimonials'
-import { photoReviews } from '@/lib/reviews'
+import { googleReviews } from '@/lib/reviews'
 import { getPageContent } from '@/lib/notion'
 import { findPhoto, listGalleryItems } from '@/lib/photos'
 import { routes } from '@/lib/routes'
@@ -64,7 +64,7 @@ export default async function HomePage() {
       </section>
 
       <Gallery items={listGalleryItems()} />
-      <Testimonials testimonials={photoReviews} />
+      <Testimonials testimonials={googleReviews} />
       <CtaBand phone={site.contactPhone} />
     </PageShell>
   )
