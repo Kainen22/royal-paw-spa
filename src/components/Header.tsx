@@ -38,9 +38,7 @@ export function Header({ phone }: HeaderProps) {
       <header className="site-header">
         <div className="container header-inner">
           <Link className="brand" href={routes.home}>
-            <span className="brand-mark">
-              <Icon name="paw" size={18} />
-            </span>
+            <img className="brand-mark" src="/logo.png" alt="" />
             <span className="brand-name">{siteName}</span>
           </Link>
 

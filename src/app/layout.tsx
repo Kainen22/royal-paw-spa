@@ -17,7 +17,13 @@ export const metadata: Metadata = {
   description:
     'Mobile dog grooming at your door. Baths, haircuts, nail trims, and spa add-ons in a fully equipped van. Book online.',
   metadataBase: new URL(siteUrl),
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: [
+      { url: '/favicon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-48.png', type: 'image/png', sizes: '48x48' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export const viewport: Viewport = {

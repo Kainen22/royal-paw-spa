@@ -288,13 +288,10 @@ p {
 }
 
 .brand-mark {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: var(--primary);
-  color: #fff;
+  height: 42px;
+  object-fit: contain;
 }
 
 .desktop-nav {
