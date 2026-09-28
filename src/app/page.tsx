@@ -7,7 +7,7 @@ import { Icon } from '@/components/Icon'
 import { PageShell } from '@/components/PageShell'
 import { ServiceCard } from '@/components/ServiceCard'
 import { Testimonials } from '@/components/Testimonials'
-import { featuredTestimonials } from '@/lib/reviews'
+import { photoReviews } from '@/lib/reviews'
 import { getPageContent } from '@/lib/notion'
 import { findPhoto, listGalleryPhotos } from '@/lib/photos'
 import { routes } from '@/lib/routes'
@@ -62,7 +62,7 @@ export default async function HomePage() {
       </section>
 
       <Gallery photos={listGalleryPhotos()} />
-      <Testimonials testimonials={featuredTestimonials} />
+      <Testimonials testimonials={photoReviews} />
       <CtaBand phone={site.contactPhone} />
     </PageShell>
   )

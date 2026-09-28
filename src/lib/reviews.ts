@@ -54,6 +54,7 @@ export const allReviews: Testimonial[] = [
       '/reviews/amber-lynette/02.jpg',
       '/reviews/amber-lynette/03.jpg',
       '/reviews/amber-lynette/04.jpg',
+      '/reviews/amber-lynette/05.jpg',
     ],
   },
   {
@@ -63,6 +64,45 @@ export const allReviews: Testimonial[] = [
     quote:
       'Amazing!! My boys are best friends and she grooms them together. They always look and smell so good after. Also the de shedding has helped so much.',
     photos: ['/reviews/tanya-berven/01.jpg', '/reviews/tanya-berven/02.jpg'],
+  },
+  {
+    id: 'google-kathy',
+    source: 'google',
+    author: 'Kathy Harvey',
+    quote:
+      'She is so good with Chloe and she looks so beautiful after she has been groomed! We have been working on her ears and they are looking so much better with her help. I definitely recommend her and appreciate her communication as well as love for our baby.',
+    photos: ['/reviews/kathy-harvey/01.jpg'],
+  },
+  {
+    id: 'google-angela',
+    source: 'google',
+    author: 'Angela Gillings',
+    quote:
+      'Tanae does such a great job grooming my wiener dogs! She always gives them cute little bows and they are always so happy to see her! Tanae is super professional, talented, and easy to talk to! I wouldn’t recommend anyone else!',
+    photos: ['/reviews/angela-gillings/01.jpg'],
+  },
+  {
+    id: 'google-theresa',
+    source: 'google',
+    author: 'Theresa Sherry',
+    quote: 'Royal Paw Spa is very good with my guy who is fearful of grooming and the hairdryer.',
+    photos: ['/reviews/theresa-sherry/01.jpg'],
+  },
+  {
+    id: 'google-erin-edwards',
+    source: 'google',
+    author: 'Erin Edwards',
+    quote:
+      'GREAT GROOMING EXPERIENCE!! Tanae is super sweet and super professional! The communication back and forth was on point. She’s mobile which is convenient and was on time for our appointment.',
+    photos: ['/reviews/erin-edwards/01.jpg'],
+  },
+  {
+    id: 'google-zayy',
+    source: 'google',
+    author: 'Zayy Simon',
+    quote:
+      'Tanae was amazing from start to finish — great communication and amazing service. My pup was groomed in a timely manner and I love his upgraded chain she offers! I recommend her to all my friends and family!',
+    photos: ['/reviews/zayy-simon/01.jpg'],
   },
   {
     id: 'moego-julie',
@@ -90,3 +130,5 @@ export const allReviews: Testimonial[] = [
 export const featuredTestimonials = allReviews.filter((review) =>
   ['google-tanya-delfin', 'google-amber', 'google-alex'].includes(review.id),
 )
+
+export const photoReviews = allReviews.filter((review) => (review.photos?.length ?? 0) > 0)

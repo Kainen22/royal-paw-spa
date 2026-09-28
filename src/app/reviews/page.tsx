@@ -3,12 +3,14 @@ import { CtaBand } from '@/components/CtaBand'
 import { PageHeader } from '@/components/PageHeader'
 import { PageShell } from '@/components/PageShell'
 import { ReviewBoard } from '@/components/ReviewBoard'
+import { ReviewCarousel } from '@/components/ReviewCarousel'
 import { getPageContent } from '@/lib/notion'
 import {
   allReviews,
   googleRating,
   googleReviewsUrl,
   moegoReviewsUrl,
+  photoReviews,
 } from '@/lib/reviews'
 
 export const revalidate = 300
@@ -38,6 +40,8 @@ export default async function ReviewsPage() {
             Open Moego reviews
           </a>
         </p>
+        <ReviewCarousel reviews={photoReviews} />
+        <h2 className="review-all-heading">All reviews</h2>
         <ReviewBoard reviews={allReviews} />
       </div>
       <CtaBand

@@ -1,4 +1,8 @@
+'use client'
+
+import { useState } from 'react'
 import { Icon } from '@/components/Icon'
+import { ReviewLightbox } from '@/components/ReviewLightbox'
 import { googleReviewsUrl, moegoReviewsUrl } from '@/lib/reviews'
 import type { Testimonial } from '@/lib/types'
 
@@ -12,7 +16,16 @@ const sourceHref = {
   moego: moegoReviewsUrl,
 } as const
 
-export function ReviewCard({ review }: { review: Testimonial }) {
+export function ReviewCard({
+  review,
+  onPhotoClick,
+}: {
+  review: Testimonial
+  onPhotoClick?: (photo: string) => void
+}) {
+  const [photoIndex, setPhotoIndex] = useState<number | null>(null)
+  const photos = review.photos ?? []
+
   return (
     <figure className="card review">
       <div className="review-top">
@@ -31,14 +44,30 @@ export function ReviewCard({ review }: { review: Testimonial }) {
         </a>
       </div>
       <blockquote>{review.quote}</blockquote>
-      {review.photos && review.photos.length > 0 ? (
+      {photos.length > 0 ? (
         <div className="review-photos">
-          {review.photos.map((photo) => (
-            <img key={photo} src={photo} alt={`Photo from ${review.author}'s review`} />
+          {photos.map((photo, index) => (
+            <button
+              key={photo}
+              type="button"
+              className="review-photo-btn"
+              onClick={() => (onPhotoClick ? onPhotoClick(photo) : setPhotoIndex(index))}
+            >
+              <img src={photo} alt={`Photo from ${review.author}'s review`} />
+            </button>
           ))}
         </div>
       ) : null}
       <figcaption>{review.author}</figcaption>
+      {photoIndex !== null ? (
+        <ReviewLightbox
+          photos={photos}
+          author={review.author}
+          index={photoIndex}
+          onIndexChange={setPhotoIndex}
+          onClose={() => setPhotoIndex(null)}
+        />
+      ) : null}
     </figure>
   )
 }

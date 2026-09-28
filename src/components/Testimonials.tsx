@@ -1,5 +1,5 @@
 import { Icon } from '@/components/Icon'
-import { ReviewCard } from '@/components/ReviewCard'
+import { ReviewCarousel } from '@/components/ReviewCarousel'
 import { googleRating } from '@/lib/reviews'
 import { routes } from '@/lib/routes'
 import type { Testimonial } from '@/lib/types'
@@ -29,11 +29,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
           See all reviews →
         </Link>
       </div>
-      <div className="grid-3">
-        {testimonials.map((item) => (
-          <ReviewCard key={item.id} review={item} />
-        ))}
-      </div>
+      <ReviewCarousel reviews={testimonials} />
     </section>
   )
 }
