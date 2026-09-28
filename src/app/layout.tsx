@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { PawCursor } from '@/components/PawCursor'
 import { getSiteName } from '@/lib/site'
 import './globals.css'
 
@@ -29,7 +30,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        <PawCursor />
+        {children}
+      </body>
     </html>
   )
 }

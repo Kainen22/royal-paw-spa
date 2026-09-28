@@ -54,6 +54,28 @@ textarea {
   cursor: text;
 }
 
+.has-paw-cursor,
+.has-paw-cursor * {
+  cursor: none !important;
+}
+
+.has-paw-cursor input:not([type='button']):not([type='submit']),
+.has-paw-cursor textarea {
+  cursor: text !important;
+}
+
+.paw-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  margin: -8px 0 0 -16px;
+  pointer-events: none;
+  z-index: 100000;
+  filter: drop-shadow(0 1px 1px rgba(29, 20, 48, 0.25));
+}
+
 img {
   max-width: 100%;
   height: auto;
