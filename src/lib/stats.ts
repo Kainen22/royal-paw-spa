@@ -1,4 +1,11 @@
-export const businessStats = [
+type BusinessStat = {
+  value: string
+  suffix?: string
+  label: string
+  note: string
+}
+
+export const businessStats: BusinessStat[] = [
   {
     value: '4',
     suffix: ' years',
