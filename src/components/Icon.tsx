@@ -35,6 +35,7 @@ const paths = {
   close: <path d="M18 6 6 18M6 6l12 12" />,
   chevronLeft: <path d="m15 18-6-6 6-6" />,
   chevronRight: <path d="m9 18 6-6-6-6" />,
+  play: <path d="M8 5v14l11-7Z" />,
   check: <path d="M20 6 9 17l-5-5" />,
   pin: (
     <>

@@ -9,7 +9,7 @@ import { ServiceCard } from '@/components/ServiceCard'
 import { Testimonials } from '@/components/Testimonials'
 import { photoReviews } from '@/lib/reviews'
 import { getPageContent } from '@/lib/notion'
-import { findPhoto, listGalleryPhotos } from '@/lib/photos'
+import { findPhoto, listGalleryItems } from '@/lib/photos'
 import { routes } from '@/lib/routes'
 
 const fallbackHeroPhoto =
@@ -61,7 +61,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <Gallery photos={listGalleryPhotos()} />
+      <Gallery items={listGalleryItems()} />
       <Testimonials testimonials={photoReviews} />
       <CtaBand phone={site.contactPhone} />
     </PageShell>

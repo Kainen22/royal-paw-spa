@@ -708,12 +708,49 @@ p {
   gap: 0.75rem;
 }
 
+.gallery-tile {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: var(--cursor-paw);
+}
+
 .gallery-photo {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  display: block;
+}
+
+.gallery-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary);
+  transform: translate(-50%, -50%);
+  box-shadow: var(--shadow);
+}
+
+.lightbox-video {
+  max-width: min(92vw, 920px);
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  border-radius: 16px;
+  background: #111;
 }
 
 @media (max-width: 900px) {
