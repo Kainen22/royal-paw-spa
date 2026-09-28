@@ -88,14 +88,11 @@ const paths = {
     </>
   ),
   tiktok: (
-    <path d="M14 4v9.2A4.2 4.2 0 1 1 10.5 9V11a2.2 2.2 0 1 0 2.2 2.2V4h4.3A6.5 6.5 0 0 0 21 8.2V10a8.7 8.7 0 0 1-4.7-1.4V16A6.2 6.2 0 1 1 8.5 10.1" />
+    <path d="M14.5 3v2.16A5.2 5.2 0 0 0 18.8 6.7v2.55a7.6 7.6 0 0 1-4.3-1.34v6.6A5.64 5.64 0 1 1 8.7 8.9v2.5a3.14 3.14 0 1 0 2.36 3.04V3Z" />
   ),
   facebook: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />,
   google: (
-    <>
-      <circle cx="12" cy="12" r="10" />
-      <path d="M8 12h8M16 12a4 4 0 1 1-1.2-2.8" />
-    </>
+    <path d="M21.6 12.23c0-.78-.07-1.53-.2-2.25H12v4.26h5.38a4.6 4.6 0 0 1-2 3.02v2.51h3.23c1.89-1.74 2.99-4.3 2.99-7.54ZM12 22c2.7 0 4.97-.89 6.62-2.43l-3.23-2.51c-.9.6-2.05.96-3.39.96-2.6 0-4.81-1.76-5.6-4.12H3.09v2.58A10 10 0 0 0 12 22Zm-5.6-6.1A6 6 0 0 1 6.09 12c0-.83.14-1.63.31-2.38H3.09v-2.58A10 10 0 0 0 2 12a10 10 0 0 0 1.09 4.52l3.31-.39Zm.31-7.48A8.07 8.07 0 0 1 12 4.5c1.47 0 2.8.5 3.84 1.5l2.88-2.88A10 10 0 0 0 12 2a10 10 0 0 0-8.91 5.42l3.62 1Z" />
   ),
 } satisfies Record<string, ReactNode>
 
@@ -108,16 +105,20 @@ type IconProps = {
   className?: string
 }
 
+const filledIcons = new Set<IconName>(['tiktok', 'google'])
+
 export function Icon({ name, size = 20, filled = false, className }: IconProps) {
+  const useFill = filled || filledIcons.has(name)
+
   return (
     <svg
       className={className}
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill={filled ? 'currentColor' : 'none'}
-      stroke="currentColor"
-      strokeWidth={filled ? 0 : 2}
+      fill={useFill ? 'currentColor' : 'none'}
+      stroke={useFill ? 'none' : 'currentColor'}
+      strokeWidth={useFill ? 0 : 2}
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"

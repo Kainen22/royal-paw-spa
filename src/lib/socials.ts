@@ -28,3 +28,5 @@ export const socialLinks: SocialLink[] = [
     icon: 'google',
   },
 ]
+
+export const headerSocialLinks = socialLinks.filter((link) => link.icon !== 'google')

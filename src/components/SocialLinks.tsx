@@ -1,15 +1,20 @@
 import { Icon } from '@/components/Icon'
-import { socialLinks } from '@/lib/socials'
+import { socialLinks, type SocialLink } from '@/lib/socials'
 
 type SocialLinksProps = {
   className?: string
   labeled?: boolean
+  links?: SocialLink[]
 }
 
-export function SocialLinks({ className = '', labeled = false }: SocialLinksProps) {
+export function SocialLinks({
+  className = '',
+  labeled = false,
+  links = socialLinks,
+}: SocialLinksProps) {
   return (
     <nav className={`social-links ${className}`.trim()} aria-label="Social media">
-      {socialLinks.map((link) => (
+      {links.map((link) => (
         <a
           key={link.href}
           href={link.href}

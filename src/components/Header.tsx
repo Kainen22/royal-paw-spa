@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { Icon } from '@/components/Icon'
 import { SocialLinks } from '@/components/SocialLinks'
 import { navLinks, routes } from '@/lib/routes'
+import { headerSocialLinks } from '@/lib/socials'
 import { getSiteName, toTelHref } from '@/lib/site'
 
 type HeaderProps = {
@@ -55,7 +56,7 @@ export function Header({ phone }: HeaderProps) {
           </nav>
 
           <div className="header-actions">
-            <SocialLinks className="header-socials" />
+            <SocialLinks className="header-socials" links={headerSocialLinks} />
             <a className="header-phone" href={telHref}>
               <Icon name="phone" size={16} />
               <span>{phone}</span>
@@ -127,7 +128,7 @@ export function Header({ phone }: HeaderProps) {
               {link.label}
             </Link>
           ))}
-          <SocialLinks className="sheet-socials" labeled />
+          <SocialLinks className="sheet-socials" labeled links={headerSocialLinks} />
         </div>
       </div>
     </>
