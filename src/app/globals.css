@@ -537,7 +537,7 @@ p {
   margin: 0;
   padding: 1.5rem 1.15rem 1.25rem;
   text-align: center;
-  box-shadow: none;
+  box-shadow: var(--shadow);
 }
 
 .stat-value {
@@ -757,6 +757,51 @@ p {
 .area-card p:not(.eyebrow) {
   color: var(--muted);
   margin-top: 0.35rem;
+}
+
+.service-area {
+  display: grid;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.service-area-copy {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 1.5rem 0.25rem;
+}
+
+.service-area-copy > div {
+  flex: 1;
+}
+
+.service-area-copy p:not(.eyebrow) {
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.service-area-map {
+  height: min(52vh, 420px);
+  width: 100%;
+  min-height: 280px;
+  background: var(--surface-alt);
+  z-index: 0;
+}
+
+.service-area-map .leaflet-container {
+  height: 100%;
+  width: 100%;
+  font: inherit;
+}
+
+.service-area-map .leaflet-overlay-pane path {
+  filter: drop-shadow(0 1px 0 rgba(29, 20, 48, 0.12))
+    drop-shadow(0 4px 10px rgba(29, 20, 48, 0.28));
 }
 
 /* Gallery */
@@ -1449,9 +1494,14 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .area-card {
+  .area-card,
+  .service-area-copy {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .service-area-copy .btn {
+    width: 100%;
   }
 
   .about-grid {

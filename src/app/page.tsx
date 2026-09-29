@@ -3,8 +3,8 @@ import { CtaBand } from '@/components/CtaBand'
 import { Gallery } from '@/components/Gallery'
 import { Hero } from '@/components/Hero'
 import { HowItWorks } from '@/components/HowItWorks'
-import { Icon } from '@/components/Icon'
 import { PageShell } from '@/components/PageShell'
+import { ServiceAreaMap } from '@/components/ServiceAreaMap'
 import { ServiceCard } from '@/components/ServiceCard'
 import { StatsBand } from '@/components/StatsBand'
 import { Testimonials } from '@/components/Testimonials'
@@ -47,21 +47,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section container">
-        <div className="card area-card">
-          <span className="area-icon">
-            <Icon name="pin" size={24} />
-          </span>
-          <div>
-            <p className="eyebrow">Service area</p>
-            <h2>Grooming just around the corner</h2>
-            <p>{site.serviceArea}</p>
-          </div>
-          <Link className="btn btn-soft" href={routes.about}>
-            Check your area
-          </Link>
-        </div>
-      </section>
+      <ServiceAreaMap />
 
       <Gallery items={listGalleryItems()} />
       <Testimonials testimonials={googleReviews} />

@@ -19,7 +19,8 @@ Outside of grooming, I’m a proud mom to my 1-year-old son, who already loves a
 Thank you for getting to know a little more about me and the heart behind Royal Paw Spa! Follow along for my latest creations, mobile grooming adventures, and all the adorable pets I’m lucky enough to work with. I can’t wait to pamper your fur baby like royalty!`,
   contactEmail: 'hello@royalpawspa.com',
   contactPhone: '(719) 291-4841',
-  serviceArea: 'Your City and surrounding neighborhoods within 20 miles',
+  serviceArea:
+    'Denver metro, Boulder, Longmont, Brighton, Aurora, Parker, Castle Rock, Golden & Littleton',
   hours: 'Daily 6:00 AM – 8:00 PM',
   paymentIntro:
     'You can pay securely online when you book through Moego, or pay your groomer when the appointment is finished.',
