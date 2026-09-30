@@ -1,512 +1,261 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap');
-
 .c-modern-atelier {
-  --ma-bg: #ffffff;
-  --ma-ink: #111111;
-  --ma-muted: #5c5c5c;
-  --ma-lav: #bd95e3;
-  --ma-lav-soft: #f3eafb;
-  --ma-line: #e8e4df;
-  --ma-serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
-  --ma-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
-  --ma-script: 'Caveat', 'Segoe Script', cursive;
-  font-family: var(--ma-sans);
+  --ma-bg: #f7f5f0;
+  --ma-ink: #141217;
+  --ma-muted: #6a6570;
+  --ma-lavender: #d4c0ea;
+  --ma-accent: #bd95e3;
+  --ma-strong: #8f63c4;
   color: var(--ma-ink);
   background: var(--ma-bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
   min-height: 100%;
 }
 
-.c-modern-atelier * {
-  box-sizing: border-box;
-}
-
-.c-modern-atelier a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.c-modern-atelier img {
-  display: block;
-  max-width: 100%;
-}
+.c-modern-atelier * { box-sizing: border-box; }
+.c-modern-atelier a { color: inherit; text-decoration: none; }
 
 .c-modern-atelier .ma-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.1rem 5vw;
-  border-bottom: 1px solid var(--ma-line);
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
+  padding: 1.15rem 4vw;
 }
 
 .c-modern-atelier .ma-brand {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.55rem;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: -0.02em;
+  gap: 0.6rem;
+  font-family: Georgia, 'Iowan Old Style', serif;
+  font-weight: 600;
 }
 
-.c-modern-atelier .ma-brand img {
-  border-radius: 999px;
-}
-
+.c-modern-atelier .ma-brand img { border-radius: 999px; filter: grayscale(1) contrast(1.2); }
 .c-modern-atelier .ma-nav nav {
   display: flex;
-  gap: 1.5rem;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  gap: 1.35rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
   color: var(--ma-muted);
-}
-
-.c-modern-atelier .ma-nav nav a:hover {
-  color: var(--ma-ink);
 }
 
 .c-modern-atelier .ma-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.65rem 1.1rem;
+  padding: 0.7rem 1.2rem;
   border-radius: 999px;
-  background: var(--ma-ink);
-  color: #fff;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.c-modern-atelier .ma-btn:hover {
-  transform: translateY(-1px);
-}
-
-.c-modern-atelier .ma-btn-soft {
-  background: var(--ma-lav-soft);
+  background: var(--ma-lavender);
   color: var(--ma-ink);
-  border: 1px solid rgba(189, 149, 227, 0.55);
-  padding: 0.9rem 1.35rem;
-  font-size: 0.92rem;
+  font-weight: 800;
+  font-size: 0.88rem;
 }
 
-.c-modern-atelier .ma-btn-soft:hover {
-  background: #ebe0f6;
+.c-modern-atelier .ma-btn-lg {
+  padding: 0.95rem 1.4rem;
+  background: #e8d8f5;
+  margin: 0.25rem 0 1.5rem;
 }
 
 .c-modern-atelier .ma-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: 1rem;
-  padding: 3.5rem 5vw 2rem;
-  align-items: start;
-  min-height: min(86vh, 820px);
+  grid-template-columns: 1fr 1.05fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 1.5rem 4vw 3rem;
 }
 
-.c-modern-atelier .ma-hero-copy {
-  position: relative;
-  z-index: 2;
-  padding-top: 1rem;
+.c-modern-atelier .ma-copy h1 {
+  margin: 0 0 1rem;
+  font-family: Georgia, 'Iowan Old Style', Times, serif;
+  font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
-.c-modern-atelier .ma-hero h1 {
-  font-family: var(--ma-serif);
-  font-size: clamp(3.2rem, 7vw, 5.6rem);
-  line-height: 0.95;
-  margin: 0 0 1.5rem;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  max-width: 10ch;
+.c-modern-atelier .ma-copy h1 em {
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 0.15rem;
 }
 
-.c-modern-atelier .ma-lede {
-  max-width: 36ch;
+.c-modern-atelier .ma-copy > p {
+  margin: 0 0 1.35rem;
+  max-width: 38ch;
   color: var(--ma-muted);
   line-height: 1.6;
-  margin: 0 0 1.5rem;
-  font-size: 1rem;
-}
-
-.c-modern-atelier .ma-note {
-  margin: 2rem 0 2.5rem;
-  font-family: var(--ma-script);
-  font-size: 1.85rem;
-  color: var(--ma-ink);
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.c-modern-atelier .ma-paw {
-  display: inline-grid;
-  place-items: center;
-  width: 1.6rem;
-  height: 1.6rem;
-  border-radius: 999px;
-  background: var(--ma-lav-soft);
-  color: var(--ma-lav);
-  font-size: 0.75rem;
-  font-family: var(--ma-sans);
-}
-
-.c-modern-atelier .ma-area {
-  max-width: 280px;
+  font-size: 1.02rem;
 }
 
 .c-modern-atelier .ma-area strong {
   display: block;
   font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.45rem;
 }
 
 .c-modern-atelier .ma-area ul {
   margin: 0;
   padding: 0;
   list-style: none;
+  display: grid;
+  gap: 0.2rem;
   color: var(--ma-muted);
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-size: 0.88rem;
 }
 
-.c-modern-atelier .ma-hero-art {
+.c-modern-atelier .ma-collage {
   position: relative;
-  min-height: 560px;
+  min-height: 480px;
+  display: grid;
+  place-items: center;
 }
 
-.c-modern-atelier .ma-portrait {
-  width: min(100%, 420px);
-  margin-left: auto;
-  aspect-ratio: 3 / 4;
+.c-modern-atelier .ma-collage::before {
+  content: '';
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, transparent 0 18%, rgba(0,0,0,0.05) 19% 34%, transparent 35%),
+    radial-gradient(circle at 65% 30%, transparent 0 14%, rgba(0,0,0,0.05) 15% 28%, transparent 29%),
+    radial-gradient(circle at 50% 62%, transparent 0 22%, rgba(0,0,0,0.05) 23% 42%, transparent 43%);
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.c-modern-atelier .ma-note {
+  position: absolute;
+  top: 6%;
+  right: 4%;
+  z-index: 3;
+  margin: 0;
+  font-family: 'Segoe Script', 'Apple Chancery', 'Bradley Hand', cursive;
+  font-size: 1.25rem;
+  color: var(--ma-strong);
+  transform: rotate(-4deg);
+}
+
+.c-modern-atelier .ma-back {
+  position: absolute;
+  right: 2%;
+  bottom: 18%;
+  width: 62%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 14px 34px rgba(20, 18, 23, 0.12);
+  z-index: 1;
+}
+
+.c-modern-atelier .ma-front {
+  position: relative;
+  z-index: 2;
+  width: 58%;
+  margin-right: 18%;
+  aspect-ratio: 3/4;
   object-fit: cover;
   border-radius: 2px;
-  filter: contrast(1.05);
-  box-shadow: 0 24px 50px rgba(17, 17, 17, 0.12);
-}
-
-.c-modern-atelier .ma-van {
-  position: absolute;
-  left: 0;
-  bottom: 8%;
-  width: min(58%, 260px);
-  aspect-ratio: 5 / 4;
-  object-fit: cover;
+  transform: rotate(-3deg);
+  box-shadow: 0 22px 48px rgba(20, 18, 23, 0.18);
   border: 8px solid #fff;
-  box-shadow: 0 16px 36px rgba(17, 17, 17, 0.14);
 }
 
-.c-modern-atelier .ma-banner {
-  margin: 1rem 5vw 0;
-  padding: 1.1rem 0;
-  border-top: 1px solid var(--ma-line);
-  border-bottom: 1px solid var(--ma-line);
-  text-align: right;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
+.c-modern-atelier .ma-tag {
+  position: absolute;
+  right: 2%;
+  bottom: 4%;
+  margin: 0;
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(20, 18, 23, 0.25);
   font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--ma-muted);
-}
-
-.c-modern-atelier .ma-services,
-.c-modern-atelier .ma-proofs,
-.c-modern-atelier .ma-reviews,
-.c-modern-atelier .ma-about {
-  padding: 3.5rem 5vw;
-}
-
-.c-modern-atelier .ma-section-head {
-  margin-bottom: 2rem;
-  max-width: 40rem;
-}
-
-.c-modern-atelier .ma-section-head span {
-  display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ma-lav);
   font-weight: 700;
-  margin-bottom: 0.55rem;
+  color: var(--ma-muted);
+  z-index: 3;
 }
 
-.c-modern-atelier .ma-section-head h2 {
-  font-family: var(--ma-serif);
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 400;
-  margin: 0 0 0.6rem;
-  letter-spacing: -0.02em;
-}
-
+.c-modern-atelier .ma-packages { padding: 0.5rem 4vw 2.5rem; }
 .c-modern-atelier .ma-section-head p {
   margin: 0;
-  color: var(--ma-muted);
-  max-width: 42ch;
-}
-
-.c-modern-atelier .ma-menu {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid var(--ma-line);
-}
-
-.c-modern-atelier .ma-menu article {
-  display: grid;
-  grid-template-columns: 3rem 1fr auto auto;
-  gap: 1.25rem;
-  align-items: center;
-  padding: 1.35rem 0;
-  border-bottom: 1px solid var(--ma-line);
-}
-
-.c-modern-atelier .ma-menu em {
-  font-family: var(--ma-serif);
-  font-style: normal;
-  font-size: 1.25rem;
-  color: var(--ma-lav);
-}
-
-.c-modern-atelier .ma-menu h3 {
-  margin: 0 0 0.25rem;
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.c-modern-atelier .ma-menu p {
-  margin: 0;
-  color: var(--ma-muted);
-  font-size: 0.92rem;
-  max-width: 48ch;
-}
-
-.c-modern-atelier .ma-menu strong {
-  font-family: var(--ma-serif);
-  font-size: 1.35rem;
-  font-weight: 400;
-}
-
-.c-modern-atelier .ma-menu a {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--ma-ink);
-  padding-bottom: 0.1rem;
+  color: var(--ma-strong);
+  font-weight: 700;
+}
+.c-modern-atelier .ma-section-head h2 {
+  margin: 0.35rem 0 1.35rem;
+  font-family: Georgia, serif;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 500;
 }
 
-.c-modern-atelier .ma-proof-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem 2rem;
-}
-
-.c-modern-atelier .ma-proof-grid article {
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--ma-line);
-}
-
-.c-modern-atelier .ma-proof-grid span {
-  color: var(--ma-lav);
-  display: block;
-  margin-bottom: 0.65rem;
-}
-
-.c-modern-atelier .ma-proof-grid p {
-  margin: 0;
-  font-family: var(--ma-serif);
-  font-size: 1.55rem;
-  line-height: 1.2;
-}
-
-.c-modern-atelier .ma-stats {
+.c-modern-atelier .ma-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  margin: 0 5vw;
-  background: var(--ma-line);
-  border: 1px solid var(--ma-line);
+  gap: 1rem;
 }
 
-.c-modern-atelier .ma-stats article {
-  background: #fff;
-  padding: 1.75rem 1.25rem;
-  text-align: left;
+.c-modern-atelier .ma-grid article {
+  border-top: 1px solid rgba(20, 18, 23, 0.15);
+  padding: 1.1rem 0.15rem;
 }
 
-.c-modern-atelier .ma-stats strong {
-  display: block;
-  font-family: var(--ma-serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  line-height: 1;
+.c-modern-atelier .ma-grid h3 {
+  margin: 0 0 0.5rem;
+  font-family: Georgia, serif;
+  font-weight: 500;
 }
-
-.c-modern-atelier .ma-stats span {
-  display: block;
-  margin-top: 0.55rem;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.c-modern-atelier .ma-stats p {
-  margin: 0.4rem 0 0;
+.c-modern-atelier .ma-grid p {
+  margin: 0 0 0.9rem;
   color: var(--ma-muted);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  min-height: 4.3em;
+}
+.c-modern-atelier .ma-grid strong { color: var(--ma-strong); }
+
+.c-modern-atelier .ma-review {
+  margin: 0 4vw 2rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid rgba(20, 18, 23, 0.12);
+  border-bottom: 1px solid rgba(20, 18, 23, 0.12);
 }
 
-.c-modern-atelier .ma-review-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.c-modern-atelier .ma-review-grid blockquote {
+.c-modern-atelier .ma-review blockquote {
   margin: 0;
-  padding: 0;
-  border: none;
-}
-
-.c-modern-atelier .ma-review-grid p {
-  margin: 0 0 1rem;
-  font-family: var(--ma-serif);
+  font-family: Georgia, serif;
   font-size: 1.35rem;
-  line-height: 1.35;
+  line-height: 1.4;
+  font-style: italic;
 }
-
-.c-modern-atelier .ma-review-grid footer {
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 700;
+.c-modern-atelier .ma-review cite {
+  display: block;
+  margin-top: 0.85rem;
+  font-style: normal;
   color: var(--ma-muted);
-}
-
-.c-modern-atelier .ma-about {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.c-modern-atelier .ma-about img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-}
-
-.c-modern-atelier .ma-about p {
-  color: var(--ma-muted);
-  line-height: 1.7;
-  margin: 0 0 1rem;
-  max-width: 48ch;
-}
-
-.c-modern-atelier .ma-cta {
-  margin: 1rem 5vw 2.5rem;
-  padding: 3.5rem 2rem;
-  text-align: center;
-  background: var(--ma-lav-soft);
-}
-
-.c-modern-atelier .ma-cta h2 {
-  font-family: var(--ma-serif);
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
-  font-weight: 400;
-  margin: 0 0 0.75rem;
-}
-
-.c-modern-atelier .ma-cta p {
-  margin: 0 0 1.5rem;
-  color: var(--ma-muted);
+  font-size: 0.9rem;
 }
 
 .c-modern-atelier .ma-foot {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  padding: 1.5rem 5vw 2.25rem;
-  border-top: 1px solid var(--ma-line);
-  font-size: 0.85rem;
-}
-
-.c-modern-atelier .ma-foot-line {
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-size: 0.68rem;
-  font-weight: 600;
+  padding: 1.25rem 4vw 2rem;
   color: var(--ma-muted);
+  font-size: 0.88rem;
 }
 
-@media (max-width: 1100px) {
-  .c-modern-atelier .ma-proof-grid,
-  .c-modern-atelier .ma-stats,
-  .c-modern-atelier .ma-review-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .c-modern-atelier .ma-menu article {
-    grid-template-columns: 2.5rem 1fr;
-    gap: 0.75rem 1rem;
-  }
-
-  .c-modern-atelier .ma-menu strong,
-  .c-modern-atelier .ma-menu a {
-    grid-column: 2;
-  }
-}
-
-@media (max-width: 900px) {
-  .c-modern-atelier .ma-nav nav {
-    display: none;
-  }
-
+@media (max-width: 960px) {
+  .c-modern-atelier .ma-nav nav { display: none; }
   .c-modern-atelier .ma-hero,
-  .c-modern-atelier .ma-about {
-    grid-template-columns: 1fr;
-  }
-
-  .c-modern-atelier .ma-hero h1 {
-    max-width: none;
-  }
-
-  .c-modern-atelier .ma-hero-art {
-    min-height: 420px;
-    margin-top: -2rem;
-  }
-
-  .c-modern-atelier .ma-portrait {
-    margin-left: 0;
-    width: 85%;
-    margin-right: 0;
-    margin-left: auto;
-  }
-
-  .c-modern-atelier .ma-banner {
-    text-align: left;
-    letter-spacing: 0.16em;
-  }
-}
-
-@media (max-width: 560px) {
-  .c-modern-atelier .ma-proof-grid,
-  .c-modern-atelier .ma-stats,
-  .c-modern-atelier .ma-review-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .c-modern-atelier .ma-van {
-    width: 62%;
-  }
+  .c-modern-atelier .ma-grid { grid-template-columns: 1fr; }
+  .c-modern-atelier .ma-front { margin-right: 0; width: 70%; }
+  .c-modern-atelier .ma-collage { min-height: 420px; }
 }
