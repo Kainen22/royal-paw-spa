@@ -1,15 +1,14 @@
 import Link from 'next/link'
 import { SocialLinks } from '@/components/SocialLinks'
-import { navLinks } from '@/lib/routes'
+import { footerLinks } from '@/lib/routes'
 import { getSiteName, toTelHref } from '@/lib/site'
 import type { SiteContent } from '@/lib/types'
 
 type FooterProps = {
   site: SiteContent
-  notionConnected: boolean
 }
 
-export function Footer({ site, notionConnected }: FooterProps) {
+export function Footer({ site }: FooterProps) {
   const siteName = getSiteName()
 
   return (
@@ -21,7 +20,7 @@ export function Footer({ site, notionConnected }: FooterProps) {
           <SocialLinks />
         </div>
         <nav className="footer-links" aria-label="Footer">
-          {navLinks.map((link) => (
+          {footerLinks.map((link) => (
             <Link key={link.href} href={link.href}>
               {link.label}
             </Link>
@@ -36,7 +35,6 @@ export function Footer({ site, notionConnected }: FooterProps) {
         <span>
           &copy; {new Date().getFullYear()} {siteName}
         </span>
-        {notionConnected && <span className="muted-badge">Content from Notion</span>}
       </div>
     </footer>
   )

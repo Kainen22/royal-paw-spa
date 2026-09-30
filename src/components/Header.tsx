@@ -30,6 +30,19 @@ export function Header({ phone }: HeaderProps) {
     }
   }, [sheetOpen])
 
+  useEffect(() => {
+    if (!sheetOpen) return
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setSheetOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [sheetOpen])
+
   function isActive(href: string) {
     return href === routes.home ? pathname === href : pathname.startsWith(href)
   }

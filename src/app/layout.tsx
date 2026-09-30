@@ -9,14 +9,31 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const siteName = getSiteName()
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://royal-paw-spa.vercel.app'
 
+const description =
+  'Mobile dog grooming at your door. Baths, haircuts, nail trims, and spa add-ons in a fully equipped van. Book online.'
+
 export const metadata: Metadata = {
   title: {
     default: `${siteName} | Mobile Dog Grooming`,
     template: `%s | ${siteName}`,
   },
-  description:
-    'Mobile dog grooming at your door. Baths, haircuts, nail trims, and spa add-ons in a fully equipped van. Book online.',
+  description,
   metadataBase: new URL(siteUrl),
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteUrl,
+    siteName,
+    title: `${siteName} | Mobile Dog Grooming`,
+    description,
+    images: [{ url: '/photos/hero.jpg', alt: `${siteName} mobile grooming van` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${siteName} | Mobile Dog Grooming`,
+    description,
+    images: ['/photos/hero.jpg'],
+  },
   icons: {
     icon: [
       { url: '/favicon.png', type: 'image/png', sizes: '32x32' },

@@ -14,7 +14,7 @@ export async function PageShell({ children }: PageShellProps) {
     <>
       <Header phone={content.site.contactPhone} />
       <main className="site-main">{children}</main>
-      <Footer site={content.site} notionConnected={content.notionConnected} />
+      <Footer site={content.site} />
     </>
   )
 }
