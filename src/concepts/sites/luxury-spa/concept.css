@@ -99,38 +99,41 @@
 .c-luxury-spa .ls-hero-media {
   position: relative;
   min-height: 420px;
+  border-radius: 22px;
+  overflow: hidden;
 }
 
 .c-luxury-spa .ls-hero-photo {
   width: 100%;
   height: 420px;
   object-fit: cover;
-  border-radius: 22px;
   display: block;
 }
 
 .c-luxury-spa .ls-hero-van {
   position: absolute;
-  right: -2%;
-  bottom: 18%;
-  width: 38%;
-  aspect-ratio: 4/3;
+  right: 0;
+  top: 0;
+  width: 42%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 16px 36px rgba(42, 24, 56, 0.18);
-  border: 3px solid #fff;
+  object-position: left center;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  mask-image: linear-gradient(90deg, transparent, #000 28%);
 }
 
 .c-luxury-spa .ls-area {
   position: absolute;
-  right: 4%;
+  left: 4%;
   bottom: 4%;
   width: min(240px, 55%);
-  background: rgba(189, 149, 227, 0.28);
+  background: rgba(189, 149, 227, 0.32);
   backdrop-filter: blur(8px);
   border-radius: 18px;
   padding: 1rem 1.1rem;
-  border: 1px solid rgba(189, 149, 227, 0.35);
+  border: 1px solid rgba(189, 149, 227, 0.4);
 }
 
 .c-luxury-spa .ls-area strong {
@@ -288,6 +291,6 @@
   .c-luxury-spa .ls-proofs,
   .c-luxury-spa .ls-grid { grid-template-columns: 1fr; }
   .c-luxury-spa .ls-proofs-row { grid-template-columns: 1fr 1fr; }
-  .c-luxury-spa .ls-hero-van { display: none; }
+  .c-luxury-spa .ls-hero-van { width: 36%; opacity: 0.95; }
   .c-luxury-spa .ls-aside { text-align: left; }
 }

@@ -37,14 +37,6 @@ export function ModernAtelierConcept() {
           <Link className="ma-btn ma-btn-lg" href={k.bookHref}>
             Book your pet&apos;s spa day →
           </Link>
-          <div className="ma-area">
-            <strong>📍 Service Area</strong>
-            <ul>
-              {areas.map((area) => (
-                <li key={area}>{area}</li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         <div className="ma-collage">
@@ -53,6 +45,14 @@ export function ModernAtelierConcept() {
           </p>
           <img className="ma-back" src={k.photos.gallery[5]} alt="Royal Paw Spa van" />
           <img className="ma-front" src={k.photos.gallery[4]} alt="Editorial groom detail" />
+          <aside className="ma-area">
+            <strong>📍 Service Area</strong>
+            <ul>
+              {areas.map((area) => (
+                <li key={area}>{area}</li>
+              ))}
+            </ul>
+          </aside>
           <p className="ma-tag">Premium care for every paw</p>
         </div>
       </section>

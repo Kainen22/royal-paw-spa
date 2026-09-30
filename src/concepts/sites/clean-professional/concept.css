@@ -68,10 +68,10 @@
 .c-clean-professional .cp-kicker {
   margin: 0 0 0.65rem;
   font-size: 0.74rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 800;
-  color: var(--cp-accent);
+  color: var(--cp-ink);
 }
 
 .c-clean-professional .cp-copy h1 {

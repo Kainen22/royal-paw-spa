@@ -132,7 +132,7 @@ export function CleanProfessionalConcept() {
         <div className="cp-media">
           <img src={k.photos.gallery[7]} alt="Happy freshly groomed dog" />
           <p className="cp-note">
-            Same love, New location <span aria-hidden>♡</span>
+            Some love, New look <span aria-hidden>♡</span>
           </p>
         </div>
       </section>

@@ -89,6 +89,19 @@
   font-size: 1.02rem;
 }
 
+.c-modern-atelier .ma-area {
+  position: absolute;
+  left: 2%;
+  bottom: 10%;
+  z-index: 4;
+  width: min(220px, 48%);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(20, 18, 23, 0.08);
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 12px 28px rgba(20, 18, 23, 0.1);
+}
+
 .c-modern-atelier .ma-area strong {
   display: block;
   font-size: 0.72rem;
@@ -104,7 +117,7 @@
   display: grid;
   gap: 0.2rem;
   color: var(--ma-muted);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
 }
 
 .c-modern-atelier .ma-collage {
@@ -160,7 +173,7 @@
   aspect-ratio: 3/4;
   object-fit: cover;
   border-radius: 2px;
-  transform: rotate(-3deg);
+  transform: rotate(-5deg);
   box-shadow: 0 22px 48px rgba(20, 18, 23, 0.18);
   border: 8px solid #fff;
 }
