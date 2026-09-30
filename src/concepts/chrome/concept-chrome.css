@@ -1,0 +1,151 @@
+.concept-chrome {
+  --chrome-bg: #dee1e6;
+  --chrome-tab: #f1f3f4;
+  --chrome-active: #ffffff;
+  --chrome-ink: #202124;
+  --chrome-muted: #5f6368;
+  min-height: 100vh;
+  background: var(--chrome-bg);
+  color: var(--chrome-ink);
+}
+
+.concept-chrome-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.5rem;
+  align-items: end;
+  padding: 0.45rem 0.6rem 0;
+  background: linear-gradient(#e8eaed, #dee1e6);
+  border-bottom: 1px solid #c4c7cc;
+}
+
+.concept-chrome-traffic {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0 0.35rem 0.55rem;
+}
+
+.concept-chrome-traffic span {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: #ff5f57;
+  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.concept-chrome-traffic span:nth-child(2) {
+  background: #febc2e;
+}
+
+.concept-chrome-traffic span:nth-child(3) {
+  background: #28c840;
+}
+
+.concept-chrome-tabs {
+  display: flex;
+  gap: 0.15rem;
+  min-width: 0;
+  overflow-x: auto;
+  padding-bottom: 0;
+  scrollbar-width: none;
+}
+
+.concept-chrome-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.concept-chrome-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 108px;
+  max-width: 170px;
+  height: 34px;
+  padding: 0 0.85rem;
+  border-radius: 10px 10px 0 0;
+  background: var(--chrome-tab);
+  color: var(--chrome-muted);
+  text-decoration: none;
+  font: 500 12px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  white-space: nowrap;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.concept-chrome-tab.is-active {
+  background: var(--chrome-active);
+  color: var(--chrome-ink);
+  z-index: 1;
+}
+
+.concept-chrome-tab.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--chrome-active);
+}
+
+.concept-chrome-favicon {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #bd95e3, #8f63c4);
+  flex-shrink: 0;
+}
+
+.concept-chrome-tab-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.concept-chrome-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0 0.35rem 0.55rem;
+  font: 500 11px/1 ui-sans-serif, system-ui, sans-serif;
+  color: var(--chrome-muted);
+  white-space: nowrap;
+}
+
+.concept-chrome-exit {
+  color: #8f63c4;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.concept-chrome-exit:hover {
+  text-decoration: underline;
+}
+
+.concept-chrome-stage {
+  background: #fff;
+  min-height: calc(100vh - 42px);
+}
+
+@media (max-width: 900px) {
+  .concept-chrome-bar {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .concept-chrome-traffic {
+    display: none;
+  }
+
+  .concept-chrome-meta {
+    order: -1;
+    justify-content: space-between;
+    padding: 0.35rem 0.25rem 0.15rem;
+  }
+
+  .concept-chrome-tab {
+    min-width: 92px;
+  }
+}

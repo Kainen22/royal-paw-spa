@@ -1,0 +1,470 @@
+.c-soft-pastels {
+  --sp-bg: #f7f2fb;
+  --sp-wash: #efe6f8;
+  --sp-card: #fffafd;
+  --sp-ink: #2a1838;
+  --sp-muted: #6d5a7a;
+  --sp-accent: #bd95e3;
+  --sp-strong: #8f63c4;
+  --sp-line: rgba(143, 99, 196, 0.16);
+  color: var(--sp-ink);
+  background:
+    radial-gradient(ellipse 70% 45% at 85% 8%, rgba(189, 149, 227, 0.28), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 5% 70%, rgba(239, 230, 248, 0.9), transparent 50%),
+    var(--sp-bg);
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  min-height: 100%;
+}
+
+.c-soft-pastels * {
+  box-sizing: border-box;
+}
+
+.c-soft-pastels a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.c-soft-pastels .sp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 4vw;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(247, 242, 251, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sp-line);
+}
+
+.c-soft-pastels .sp-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 700;
+}
+
+.c-soft-pastels .sp-brand img {
+  border-radius: 999px;
+}
+
+.c-soft-pastels .sp-nav nav {
+  display: flex;
+  gap: 1.3rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: var(--sp-muted);
+}
+
+.c-soft-pastels .sp-nav nav a:hover {
+  color: var(--sp-ink);
+}
+
+.c-soft-pastels .sp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72rem 1.25rem;
+  border-radius: 999px;
+  background: var(--sp-accent);
+  color: #fff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  box-shadow: 0 10px 24px rgba(189, 149, 227, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.c-soft-pastels .sp-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(143, 99, 196, 0.35);
+}
+
+.c-soft-pastels .sp-btn-lg {
+  padding: 0.95rem 1.45rem;
+  font-size: 0.95rem;
+}
+
+.c-soft-pastels .sp-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 3.25rem 4vw 2.5rem;
+}
+
+.c-soft-pastels .sp-hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 3.9rem);
+  line-height: 1.05;
+  font-weight: 600;
+  color: var(--sp-ink);
+}
+
+.c-soft-pastels .sp-hero-copy > p {
+  margin: 1.1rem 0 1.55rem;
+  max-width: 38ch;
+  color: var(--sp-muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.c-soft-pastels .sp-hero-media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 420px;
+}
+
+.c-soft-pastels .sp-blob {
+  width: min(100%, 440px);
+  aspect-ratio: 1;
+  padding: 10px;
+  background: linear-gradient(145deg, rgba(189, 149, 227, 0.55), rgba(239, 230, 248, 0.9));
+  border-radius: 58% 42% 48% 52% / 48% 55% 45% 52%;
+  box-shadow: 0 22px 50px rgba(143, 99, 196, 0.18);
+  overflow: hidden;
+}
+
+.c-soft-pastels .sp-blob img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 56% 44% 50% 50% / 46% 54% 46% 54%;
+  display: block;
+}
+
+.c-soft-pastels .sp-note {
+  position: absolute;
+  right: 2%;
+  bottom: 12%;
+  margin: 0;
+  max-width: 10ch;
+  font-family: 'Segoe Script', 'Apple Chancery', 'Bradley Hand', cursive;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: var(--sp-strong);
+  transform: rotate(-6deg);
+}
+
+.c-soft-pastels .sp-note span {
+  display: inline-block;
+  margin-left: 0.2rem;
+  color: var(--sp-accent);
+}
+
+.c-soft-pastels .sp-services {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0.5rem 4vw 2.75rem;
+}
+
+.c-soft-pastels .sp-services article {
+  background: var(--sp-card);
+  border: 1.5px solid rgba(189, 149, 227, 0.35);
+  border-radius: 22px;
+  padding: 1.25rem 1.1rem;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(143, 99, 196, 0.06);
+}
+
+.c-soft-pastels .sp-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 0.65rem;
+  color: var(--sp-strong);
+}
+
+.c-soft-pastels .sp-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.c-soft-pastels .sp-services h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.c-soft-pastels .sp-services p {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.86rem;
+  color: var(--sp-muted);
+}
+
+.c-soft-pastels .sp-kicker {
+  margin: 0 0 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--sp-strong);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+}
+
+.c-soft-pastels .sp-packages {
+  padding: 0.5rem 4vw 3rem;
+}
+
+.c-soft-pastels .sp-section-head h2 {
+  margin: 0 0 1.4rem;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  font-weight: 600;
+}
+
+.c-soft-pastels .sp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.c-soft-pastels .sp-grid article {
+  background: var(--sp-card);
+  border-radius: 22px;
+  border: 1px solid var(--sp-line);
+  padding: 1.3rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  box-shadow: 0 8px 20px rgba(143, 99, 196, 0.05);
+}
+
+.c-soft-pastels .sp-grid h3 {
+  margin: 0 0 0.5rem;
+  font-family: Georgia, 'Iowan Old Style', serif;
+  font-size: 1.12rem;
+}
+
+.c-soft-pastels .sp-grid p {
+  margin: 0 0 1rem;
+  color: var(--sp-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  min-height: 4.5em;
+}
+
+.c-soft-pastels .sp-grid strong {
+  color: var(--sp-strong);
+}
+
+.c-soft-pastels .sp-testimonial {
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  padding: 0 4vw 3rem;
+}
+
+.c-soft-pastels .sp-testimonial blockquote {
+  margin: 0;
+  padding: 1.85rem 2rem;
+  background: var(--sp-wash);
+  border-radius: 26px;
+  border: 1px solid var(--sp-line);
+}
+
+.c-soft-pastels .sp-testimonial blockquote p {
+  margin: 0 0 1.2rem;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.45;
+  font-style: italic;
+}
+
+.c-soft-pastels .sp-testimonial footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.1rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.c-soft-pastels .sp-testimonial cite {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--sp-muted);
+}
+
+.c-soft-pastels .sp-stars {
+  color: #d4a017;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+}
+
+.c-soft-pastels .sp-happy {
+  display: grid;
+  align-content: end;
+  gap: 0.65rem;
+  justify-items: start;
+}
+
+.c-soft-pastels .sp-happy-media {
+  position: relative;
+  width: min(100%, 220px);
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(143, 99, 196, 0.14);
+}
+
+.c-soft-pastels .sp-happy-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.c-soft-pastels .sp-play {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--sp-strong);
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  padding-left: 2px;
+  box-shadow: 0 8px 18px rgba(42, 24, 56, 0.18);
+}
+
+.c-soft-pastels .sp-happy > p {
+  margin: 0;
+  font-family: 'Segoe Script', 'Apple Chancery', 'Bradley Hand', cursive;
+  color: var(--sp-strong);
+  font-size: 1.05rem;
+}
+
+.c-soft-pastels .sp-happy > p span {
+  color: var(--sp-accent);
+}
+
+.c-soft-pastels .sp-about {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2.25rem;
+  align-items: center;
+  padding: 0.5rem 4vw 3rem;
+}
+
+.c-soft-pastels .sp-about-copy h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 600;
+}
+
+.c-soft-pastels .sp-about-copy > p {
+  margin: 0 0 1.2rem;
+  color: var(--sp-muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.c-soft-pastels .sp-about-copy ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.92rem;
+}
+
+.c-soft-pastels .sp-about-copy li::before {
+  content: '♥';
+  color: var(--sp-accent);
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.c-soft-pastels .sp-about-media img {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  border-radius: 28px;
+  border: 1px solid var(--sp-line);
+  box-shadow: 0 16px 36px rgba(143, 99, 196, 0.12);
+}
+
+.c-soft-pastels .sp-cta {
+  margin: 0 4vw 2.25rem;
+  padding: 2rem 2.15rem;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #bd95e3, #8f63c4);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  box-shadow: 0 18px 40px rgba(143, 99, 196, 0.28);
+}
+
+.c-soft-pastels .sp-cta h2 {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+}
+
+.c-soft-pastels .sp-cta p {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  opacity: 0.92;
+}
+
+.c-soft-pastels .sp-cta .sp-btn {
+  background: #fff;
+  color: var(--sp-ink);
+  box-shadow: 0 10px 22px rgba(42, 24, 56, 0.16);
+}
+
+.c-soft-pastels .sp-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.25rem 4vw 2rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.88rem;
+  color: var(--sp-muted);
+  border-top: 1px solid var(--sp-line);
+}
+
+@media (max-width: 960px) {
+  .c-soft-pastels .sp-nav nav {
+    display: none;
+  }
+
+  .c-soft-pastels .sp-hero,
+  .c-soft-pastels .sp-about,
+  .c-soft-pastels .sp-testimonial,
+  .c-soft-pastels .sp-grid,
+  .c-soft-pastels .sp-services {
+    grid-template-columns: 1fr;
+  }
+
+  .c-soft-pastels .sp-hero-media {
+    min-height: 340px;
+  }
+
+  .c-soft-pastels .sp-note {
+    right: 6%;
+    bottom: 4%;
+  }
+
+  .c-soft-pastels .sp-services {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .c-soft-pastels .sp-services {
+    grid-template-columns: 1fr;
+  }
+}

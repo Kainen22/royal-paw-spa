@@ -1,0 +1,531 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+
+.c-glam-grooming {
+  --gg-lav: #bd95e3;
+  --gg-purple: #8f63c4;
+  --gg-hot: #e83e8c;
+  --gg-hot-deep: #d12f78;
+  --gg-ink: #2a1838;
+  --gg-soft: #f6eefc;
+  --gg-white: #ffffff;
+  --gg-muted: #6b5a7a;
+  --gg-sans: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+  --gg-display: 'Fraunces', Georgia, serif;
+  font-family: var(--gg-sans);
+  color: var(--gg-ink);
+  background: var(--gg-soft);
+  min-height: 100%;
+}
+
+.c-glam-grooming * {
+  box-sizing: border-box;
+}
+
+.c-glam-grooming a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.c-glam-grooming img {
+  display: block;
+  max-width: 100%;
+}
+
+.c-glam-grooming .gg-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 4vw;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(143, 99, 196, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.c-glam-grooming .gg-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.c-glam-grooming .gg-brand img {
+  border-radius: 999px;
+}
+
+.c-glam-grooming .gg-nav nav {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--gg-muted);
+}
+
+.c-glam-grooming .gg-nav nav a:hover {
+  color: var(--gg-purple);
+}
+
+.c-glam-grooming .gg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.c-glam-grooming .gg-btn-hot {
+  background: var(--gg-hot);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(232, 62, 140, 0.35);
+}
+
+.c-glam-grooming .gg-btn-hot:hover {
+  background: var(--gg-hot-deep);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.c-glam-grooming .gg-btn-lg {
+  padding: 0.95rem 1.55rem;
+  font-size: 1rem;
+}
+
+.c-glam-grooming .gg-btn-sm {
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
+  align-self: flex-start;
+}
+
+.c-glam-grooming .gg-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 2rem;
+  padding: 3rem 4vw 2.5rem;
+  align-items: center;
+  background: linear-gradient(135deg, #bd95e3 0%, #a678d4 45%, #8f63c4 100%);
+  color: var(--gg-white);
+  overflow: hidden;
+}
+
+.c-glam-grooming .gg-paws {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.c-glam-grooming .gg-paws span {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.c-glam-grooming .gg-paws span:nth-child(1) {
+  top: 12%;
+  left: 8%;
+  width: 70px;
+  height: 70px;
+}
+
+.c-glam-grooming .gg-paws span:nth-child(2) {
+  top: 55%;
+  left: 38%;
+  width: 28px;
+  height: 28px;
+}
+
+.c-glam-grooming .gg-paws span:nth-child(3) {
+  top: 18%;
+  right: 12%;
+  width: 40px;
+  height: 40px;
+}
+
+.c-glam-grooming .gg-paws span:nth-child(4) {
+  bottom: 10%;
+  left: 18%;
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.c-glam-grooming .gg-hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.c-glam-grooming .gg-kicker {
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 800;
+  opacity: 0.9;
+}
+
+.c-glam-grooming .gg-hero h1 {
+  font-family: var(--gg-display);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  font-weight: 700;
+}
+
+.c-glam-grooming .gg-lede {
+  margin: 0 0 1.5rem;
+  max-width: 40ch;
+  line-height: 1.55;
+  font-size: 1.05rem;
+  opacity: 0.95;
+}
+
+.c-glam-grooming .gg-rating {
+  margin: 1rem 0 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  opacity: 0.92;
+}
+
+.c-glam-grooming .gg-hero-visual {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 0.85rem;
+  align-items: start;
+}
+
+.c-glam-grooming .gg-main {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 28px;
+  border: 4px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 40px rgba(42, 24, 56, 0.28);
+}
+
+.c-glam-grooming .gg-ba {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.c-glam-grooming .gg-ba figure {
+  margin: 0;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(42, 24, 56, 0.22);
+}
+
+.c-glam-grooming .gg-ba img {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+}
+
+.c-glam-grooming .gg-ba figcaption {
+  position: absolute;
+  left: 0.55rem;
+  bottom: 0.55rem;
+  background: rgba(42, 24, 56, 0.72);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+}
+
+.c-glam-grooming .gg-area-card {
+  grid-column: 1 / -1;
+  justify-self: end;
+  width: min(240px, 100%);
+  margin-top: -2.5rem;
+  background: var(--gg-purple);
+  color: #fff;
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 14px 30px rgba(42, 24, 56, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.c-glam-grooming .gg-area-card strong {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  margin-bottom: 0.45rem;
+}
+
+.c-glam-grooming .gg-area-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  opacity: 0.95;
+}
+
+.c-glam-grooming .gg-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  padding: 1rem 4vw;
+  background: #efe0fb;
+  border-bottom: 1px solid rgba(143, 99, 196, 0.12);
+}
+
+.c-glam-grooming .gg-strip div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gg-ink);
+  padding: 0.55rem 0.35rem;
+}
+
+.c-glam-grooming .gg-strip span {
+  color: var(--gg-hot);
+  font-size: 1rem;
+}
+
+.c-glam-grooming .gg-services,
+.c-glam-grooming .gg-reviews {
+  padding: 2.5rem 4vw;
+}
+
+.c-glam-grooming .gg-section-head {
+  margin-bottom: 1.5rem;
+}
+
+.c-glam-grooming .gg-eyebrow {
+  margin: 0 0 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gg-purple);
+}
+
+.c-glam-grooming .gg-section-head h2 {
+  font-family: var(--gg-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  margin: 0 0 0.45rem;
+}
+
+.c-glam-grooming .gg-section-head p:not(.gg-eyebrow) {
+  margin: 0;
+  color: var(--gg-muted);
+  max-width: 46ch;
+}
+
+.c-glam-grooming .gg-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.c-glam-grooming .gg-cards article {
+  background: #fff;
+  border-radius: 22px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  box-shadow: 0 10px 28px rgba(42, 24, 56, 0.08);
+  border: 1px solid rgba(189, 149, 227, 0.25);
+  transition: transform 0.25s ease;
+}
+
+.c-glam-grooming .gg-cards article:hover {
+  transform: translateY(-4px) rotate(-0.4deg);
+}
+
+.c-glam-grooming .gg-cards h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.c-glam-grooming .gg-cards p {
+  margin: 0;
+  color: var(--gg-muted);
+  font-size: 0.92rem;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.c-glam-grooming .gg-pkg-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.c-glam-grooming .gg-price {
+  font-weight: 800;
+  color: var(--gg-purple);
+  font-size: 1.05rem;
+}
+
+.c-glam-grooming .gg-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin: 0 4vw;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #bd95e3, #8f63c4);
+  border-radius: 22px;
+  color: #fff;
+}
+
+.c-glam-grooming .gg-stats article {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.c-glam-grooming .gg-stats strong {
+  display: block;
+  font-family: var(--gg-display);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.c-glam-grooming .gg-stats span {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  opacity: 0.92;
+}
+
+.c-glam-grooming .gg-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.c-glam-grooming .gg-review-grid blockquote {
+  margin: 0;
+  background: #fff;
+  border-radius: 20px;
+  padding: 1.35rem;
+  border: 1px solid rgba(189, 149, 227, 0.28);
+  box-shadow: 0 8px 22px rgba(42, 24, 56, 0.06);
+}
+
+.c-glam-grooming .gg-review-grid p {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+  font-size: 0.98rem;
+}
+
+.c-glam-grooming .gg-review-grid footer {
+  font-weight: 800;
+  color: var(--gg-purple);
+  font-size: 0.88rem;
+}
+
+.c-glam-grooming .gg-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+  padding: 0.5rem 4vw 2rem;
+}
+
+.c-glam-grooming .gg-gallery img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.c-glam-grooming .gg-cta {
+  margin: 0 4vw 2rem;
+  padding: 2.25rem;
+  border-radius: 26px;
+  background: #fff;
+  border: 2px solid rgba(232, 62, 140, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  box-shadow: 0 16px 36px rgba(42, 24, 56, 0.08);
+}
+
+.c-glam-grooming .gg-cta h2 {
+  font-family: var(--gg-display);
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  margin: 0 0 0.4rem;
+}
+
+.c-glam-grooming .gg-cta p {
+  margin: 0;
+  color: var(--gg-muted);
+}
+
+.c-glam-grooming .gg-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.4rem 4vw 2.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gg-muted);
+  border-top: 1px solid rgba(143, 99, 196, 0.15);
+  background: #fff;
+}
+
+@media (max-width: 1100px) {
+  .c-glam-grooming .gg-cards,
+  .c-glam-grooming .gg-stats,
+  .c-glam-grooming .gg-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .c-glam-grooming .gg-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .c-glam-grooming .gg-nav nav {
+    display: none;
+  }
+
+  .c-glam-grooming .gg-hero,
+  .c-glam-grooming .gg-hero-visual,
+  .c-glam-grooming .gg-review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .c-glam-grooming .gg-area-card {
+    margin-top: 0;
+    justify-self: stretch;
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .c-glam-grooming .gg-cards,
+  .c-glam-grooming .gg-stats,
+  .c-glam-grooming .gg-gallery,
+  .c-glam-grooming .gg-strip {
+    grid-template-columns: 1fr;
+  }
+}
