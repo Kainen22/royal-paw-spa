@@ -1,0 +1,16 @@
+---
+description: Deploy mockup and experiment work only to Vercel Preview sandbox, never production, until the user explicitly allows production.
+alwaysApply: true
+---
+
+# Sandbox-only deploys
+
+Until the user **explicitly** says to ship to production / live / `royalpawspa.com` / merge to `main`:
+
+- Do **not** commit or push to `main`.
+- Do **not** run production deploys (`vercel --prod`, merge to `main`, etc.).
+- Work on branch `sandbox/mockups` (or another non-`main` branch the user names).
+- Push only that branch so Vercel creates a **Preview** URL.
+- If already on `main` with local changes meant for experiments, move them onto `sandbox/mockups` before pushing.
+
+Production is allowed only after a clear user instruction such as “push live”, “deploy to production”, or “merge the sandbox to main”.
