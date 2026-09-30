@@ -39,11 +39,11 @@ export function ServiceAreaMap({ bookHref = routes.book }: ServiceAreaMapProps) 
 
       // One closed loop from Moego’s real zone union
       const polygon = L.polygon(serviceAreaPolygon, {
-        color: '#6b3fa0',
+        color: '#bd95e3',
         weight: 3,
         opacity: 1,
-        fillColor: '#6b3fa0',
-        fillOpacity: 0.3,
+        fillColor: '#bd95e3',
+        fillOpacity: 0.35,
         className: 'service-area-shape',
       }).addTo(map)
 
