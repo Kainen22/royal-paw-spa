@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 import { Icon } from '@/components/Icon'
 import { routes } from '@/lib/routes'
 import { toTelHref } from '@/lib/site'
@@ -18,11 +19,20 @@ const highlights = [
 export function Hero({ content, photo }: HeroProps) {
   return (
     <section className="hero container">
+      <span className="hero-watermark" aria-hidden>
+        Spa
+      </span>
       <div className="hero-copy">
-        <p className="eyebrow">{content.heroKicker}</p>
-        <h1>{content.heroTitle}</h1>
-        <p className="lead">{content.heroSubtitle}</p>
-        <div className="btn-row">
+        <p className="eyebrow hero-enter" style={{ '--hero-i': 0 } as CSSProperties}>
+          {content.heroKicker}
+        </p>
+        <h1 className="hero-enter" style={{ '--hero-i': 1 } as CSSProperties}>
+          {content.heroTitle}
+        </h1>
+        <p className="lead hero-enter" style={{ '--hero-i': 2 } as CSSProperties}>
+          {content.heroSubtitle}
+        </p>
+        <div className="btn-row hero-enter" style={{ '--hero-i': 3 } as CSSProperties}>
           <Link className="btn btn-primary" href={routes.book}>
             <Icon name="calendar" size={18} />
             Book online
@@ -32,7 +42,7 @@ export function Hero({ content, photo }: HeroProps) {
             Call {content.contactPhone}
           </a>
         </div>
-        <ul className="chip-list">
+        <ul className="chip-list hero-enter" style={{ '--hero-i': 4 } as CSSProperties}>
           {highlights.map((item) => (
             <li key={item.label} className="chip">
               <Icon name={item.icon} size={16} />
@@ -41,13 +51,15 @@ export function Hero({ content, photo }: HeroProps) {
           ))}
         </ul>
       </div>
-      <div className="hero-media">
-        <img
-          src={photo}
-          alt="Royal Paw Spa owner in the mobile grooming van"
-          width={1200}
-          height={900}
-        />
+      <div className="hero-media hero-enter" style={{ '--hero-i': 2 } as CSSProperties}>
+        <div className="hero-media-frame">
+          <img
+            src={photo}
+            alt="Royal Paw Spa owner in the mobile grooming van"
+            width={1200}
+            height={900}
+          />
+        </div>
         <div className="hero-badge">
           <Icon name="pin" size={18} />
           <div>

@@ -4,6 +4,7 @@ import { Gallery } from '@/components/Gallery'
 import { Hero } from '@/components/Hero'
 import { HowItWorks } from '@/components/HowItWorks'
 import { PageShell } from '@/components/PageShell'
+import { Reveal } from '@/components/Reveal'
 import { ServiceAreaMap } from '@/components/ServiceAreaMap'
 import { ServiceCard } from '@/components/ServiceCard'
 import { StatsBand } from '@/components/StatsBand'
@@ -28,9 +29,11 @@ export default async function HomePage() {
     <PageShell>
       <Hero content={site} photo={findPhoto('hero') ?? fallbackHeroPhoto} />
       <StatsBand />
-      <HowItWorks />
+      <Reveal from="up">
+        <HowItWorks />
+      </Reveal>
 
-      <section className="section container">
+      <Reveal as="section" className="section container" from="up" delayMs={60}>
         <div className="section-head section-head-row">
           <div>
             <p className="eyebrow">Services</p>
@@ -41,17 +44,27 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="grid-3">
-          {shown.map((service) => (
-            <ServiceCard key={service.id} service={service} compact />
+          {shown.map((service, index) => (
+            <Reveal key={service.id} from="up" delayMs={80 + index * 70}>
+              <ServiceCard service={service} compact />
+            </Reveal>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <ServiceAreaMap />
+      <Reveal from="up" delayMs={40}>
+        <ServiceAreaMap />
+      </Reveal>
 
-      <Gallery items={listGalleryItems()} />
-      <Testimonials testimonials={googleReviews} />
-      <CtaBand phone={site.contactPhone} />
+      <Reveal from="up" delayMs={40}>
+        <Gallery items={listGalleryItems()} />
+      </Reveal>
+      <Reveal from="up" delayMs={40}>
+        <Testimonials testimonials={googleReviews} />
+      </Reveal>
+      <Reveal from="zoom" delayMs={40}>
+        <CtaBand phone={site.contactPhone} />
+      </Reveal>
     </PageShell>
   )
 }
