@@ -479,6 +479,9 @@ p {
   -webkit-text-stroke: 1.5px rgba(143, 99, 196, 0.18);
   pointer-events: none;
   user-select: none;
+}
+
+.hero.is-inview .hero-watermark {
   animation: watermark-drift 18s ease-in-out infinite alternate;
 }
 
@@ -569,6 +572,9 @@ p {
   object-position: 78% 18%;
   display: block;
   transform: scale(1.06);
+}
+
+.hero.is-inview .hero-media img {
   animation: hero-kenburns 14s ease-in-out infinite alternate;
 }
 
@@ -595,6 +601,9 @@ p {
   border-radius: 14px;
   box-shadow: var(--shadow-border);
   font-size: 0.87rem;
+}
+
+.hero.is-inview .hero-badge {
   animation: badge-float 4.5s ease-in-out infinite;
 }
 
@@ -1682,6 +1691,64 @@ p {
 
   .hero .btn-row .btn {
     flex: 1 1 100%;
+  }
+
+  /* Mobile motion: same reveals as desktop, softer + vertical-only */
+  .reveal {
+    will-change: auto;
+  }
+
+  .reveal-up,
+  .reveal-left,
+  .reveal-right {
+    transform: translate3d(0, 28px, 0);
+  }
+
+  .reveal-zoom {
+    transform: translate3d(0, 20px, 0) scale(0.97);
+  }
+
+  .hero-enter {
+    transform: translate3d(0, 20px, 0);
+  }
+
+  .hero-media.hero-enter {
+    transform: translate3d(0, 24px, 0);
+  }
+
+  .hero.is-inview .hero-enter {
+    transition-delay: calc(40ms + var(--hero-i, 0) * 60ms);
+  }
+
+  .hero.is-inview .hero-media.hero-enter {
+    transition-delay: 60ms;
+  }
+
+  .hero-watermark {
+    font-size: clamp(5rem, 28vw, 9rem);
+    right: -6%;
+    top: -4%;
+  }
+
+  .hero.is-inview .hero-watermark {
+    animation-duration: 22s;
+  }
+
+  /* Keep ken burns gentle; skip floating badge on touch layouts */
+  .hero.is-inview .hero-media img {
+    animation-duration: 18s;
+  }
+
+  .hero.is-inview .hero-badge {
+    animation: none;
+  }
+
+  .stat-card {
+    transform: translate3d(0, 20px, 0);
+  }
+
+  .stats-band.is-visible .stat-card {
+    transition-delay: calc(40ms + var(--stat-i, 0) * 50ms);
   }
 
   .steps {
