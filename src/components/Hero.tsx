@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Icon } from '@/components/Icon'
-import { revealObserverOptions } from '@/lib/motion'
+import { afterPaint, isElementInViewport, revealObserverOptions } from '@/lib/motion'
 import { routes } from '@/lib/routes'
 import { toTelHref } from '@/lib/site'
 import type { SiteContent } from '@/lib/types'
@@ -20,22 +20,47 @@ const highlights = [
 ] as const
 
 export function Hero({ content, photo }: HeroProps) {
+  // Start false so the first paint is the "hidden" hero-enter state.
+  // Starting true made iOS Safari skip the entrance transition entirely.
   const ref = useRef<HTMLElement | null>(null)
-  const [inView, setInView] = useState(true)
+  const [inView, setInView] = useState(false)
 
   useEffect(() => {
     const node = ref.current
     if (!node) return
+
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setInView(true)
       return
     }
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      revealObserverOptions(),
-    )
+
+    let cancelled = false
+
+    const show = () => {
+      if (cancelled) return
+      afterPaint(() => {
+        if (!cancelled) setInView(true)
+      })
+    }
+
+    const hide = () => {
+      if (!cancelled) setInView(false)
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) show()
+      else hide()
+    }, revealObserverOptions())
     observer.observe(node)
-    return () => observer.disconnect()
+
+    afterPaint(() => {
+      if (!cancelled && isElementInViewport(node)) show()
+    })
+
+    return () => {
+      cancelled = true
+      observer.disconnect()
+    }
   }, [])
 
   return (

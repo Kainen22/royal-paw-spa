@@ -1,7 +1,12 @@
 'use client'
 
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
-import { mobileRevealDelay, revealObserverOptions } from '@/lib/motion'
+import {
+  afterPaint,
+  isElementInViewport,
+  mobileRevealDelay,
+  revealObserverOptions,
+} from '@/lib/motion'
 
 type RevealProps = {
   children: ReactNode
@@ -32,17 +37,43 @@ export function Reveal({
     setDelay(mobileRevealDelay(delayMs))
 
     const node = ref.current
-    if (!node || prefersReduced.matches) {
+    if (!node) {
+      return () => prefersReduced.removeEventListener('change', syncReduced)
+    }
+
+    if (prefersReduced.matches) {
       setVisible(true)
       return () => prefersReduced.removeEventListener('change', syncReduced)
     }
 
+    let cancelled = false
+
+    const show = () => {
+      if (cancelled) return
+      // Paint opacity:0 first, then flip — required for iOS Safari transitions
+      afterPaint(() => {
+        if (!cancelled) setVisible(true)
+      })
+    }
+
+    const hide = () => {
+      if (!cancelled) setVisible(false)
+    }
+
     const observer = new IntersectionObserver(([entry]) => {
-      // Re-trigger every pass: in when entering, out when leaving
-      setVisible(entry.isIntersecting)
+      if (entry.isIntersecting) show()
+      else hide()
     }, revealObserverOptions())
     observer.observe(node)
+
+    // iOS Safari sometimes skips the first IO callback until a scroll.
+    // Seed from geometry after paint so above-the-fold sections still animate in.
+    afterPaint(() => {
+      if (!cancelled && isElementInViewport(node)) show()
+    })
+
     return () => {
+      cancelled = true
       observer.disconnect()
       prefersReduced.removeEventListener('change', syncReduced)
     }

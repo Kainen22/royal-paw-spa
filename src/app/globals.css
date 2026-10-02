@@ -1693,7 +1693,8 @@ p {
     flex: 1 1 100%;
   }
 
-  /* Mobile motion: same reveals as desktop, softer + vertical-only */
+  /* Mobile motion: same reveals as desktop, softer + vertical-only.
+     Prefer keyframe entrances on iOS Safari — class toggles often skip CSS transitions. */
   .reveal {
     will-change: auto;
   }
@@ -1708,6 +1709,11 @@ p {
     transform: translate3d(0, 20px, 0) scale(0.97);
   }
 
+  .reveal.is-inview {
+    animation: mobile-reveal-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
   .hero-enter {
     transform: translate3d(0, 20px, 0);
   }
@@ -1717,11 +1723,13 @@ p {
   }
 
   .hero.is-inview .hero-enter {
-    transition-delay: calc(40ms + var(--hero-i, 0) * 60ms);
+    transition: none;
+    animation: mobile-reveal-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(40ms + var(--hero-i, 0) * 60ms);
   }
 
   .hero.is-inview .hero-media.hero-enter {
-    transition-delay: 60ms;
+    animation-delay: 60ms;
   }
 
   .hero-watermark {
@@ -1916,6 +1924,17 @@ p {
 @media (max-width: 420px) {
   .brand-name {
     font-size: 0.95rem;
+  }
+}
+
+@keyframes mobile-reveal-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
