@@ -814,6 +814,108 @@ p {
   box-shadow: var(--shadow-hover);
 }
 
+/* Top breeds cut — analytics ranking */
+.top-breeds {
+  margin-top: 1.5rem;
+  padding: 1.35rem 1.35rem 1.1rem;
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.top-breeds.is-visible {
+  opacity: 1;
+  transform: none;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 180ms;
+}
+
+.top-breeds-head h3 {
+  margin: 0.15rem 0 0;
+  font-size: 1.2rem;
+}
+
+.top-breeds-note {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.top-breeds-list {
+  list-style: none;
+  margin: 1.15rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.top-breeds-row {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.55rem 0.35rem;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition:
+    opacity 0.45s ease,
+    transform 0.5s ease,
+    background 0.15s ease;
+}
+
+.top-breeds.is-visible .top-breeds-row {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(220ms + var(--breed-i, 0) * 70ms);
+}
+
+.top-breeds-row:hover {
+  background: var(--surface-alt);
+}
+
+.top-breeds-rank {
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.top-breeds-meta {
+  min-width: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.top-breeds-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.top-breeds-bar {
+  display: block;
+  height: 4px;
+  width: var(--breed-bar, 40%);
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-strong));
+}
+
+.top-breeds-count {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  min-width: 2.5rem;
+  text-align: right;
+}
+
 .stat-value {
   margin: 0;
   font-size: clamp(2rem, 4vw, 2.7rem);
@@ -2024,6 +2126,8 @@ p {
   .stat-card,
   .step,
   .reveal,
+  .top-breeds,
+  .top-breeds-row,
   .ad-banner-viewport {
     animation: none !important;
     transition: none !important;
