@@ -20,6 +20,14 @@ Drop images in `public/photos`:
 - `about.jpg` — About page
 - `gallery/` — Recent grooms
 
+## Blog updates
+
+Homepage shows the latest 3 posts; all posts live at `/blog`.
+
+**Option A — Notion (best for the owner):** create a database with properties `Title`, `Slug`, `Excerpt`, `Body`, `Date`, `Published`, share it with the integration, and set `NOTION_BLOG_DATABASE_ID` in env.
+
+**Option B — code fallback:** edit `src/lib/blog-posts.ts`, commit, and redeploy.
+
 ## Version history
 
 Every save is already on GitHub. Named checkpoints:
