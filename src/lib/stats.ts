@@ -5,6 +5,11 @@ type BusinessStat = {
   note: string
 }
 
+export type TopBreed = {
+  name: string
+  count: number
+}
+
 export const businessStats: BusinessStat[] = [
   {
     value: '4+',
@@ -28,4 +33,13 @@ export const businessStats: BusinessStat[] = [
     label: 'Average client stay',
     note: 'Families keep coming back',
   },
+]
+
+/** Most-groomed breeds from the groomer’s appointment analytics. */
+export const topBreedsCut: TopBreed[] = [
+  { name: 'Shih Tzu', count: 140 },
+  { name: 'Goldendoodle', count: 103 },
+  { name: 'Miniature Schnauzer', count: 74 },
+  { name: 'German Shepherd', count: 60 },
+  { name: 'Yorkshire Terrier', count: 58 },
 ]

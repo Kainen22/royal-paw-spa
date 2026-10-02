@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { afterPaint, isElementInViewport, revealObserverOptions } from '@/lib/motion'
-import { businessStats } from '@/lib/stats'
+import { businessStats, topBreedsCut } from '@/lib/stats'
 import { googleRating } from '@/lib/reviews'
 
 function parseStatValue(raw: string) {
@@ -147,6 +147,41 @@ export function StatsBand() {
             ))}
           </div>
         </div>
+
+        <aside
+          className={`top-breeds card${inView ? ' is-visible' : ''}`}
+          aria-label="Top five breeds cut by the groomer"
+        >
+          <div className="top-breeds-head">
+            <div>
+              <p className="eyebrow">Analytics</p>
+              <h3>Top 5 breeds cut</h3>
+              <p className="top-breeds-note">Most-groomed dogs through the Royal Paw Spa van</p>
+            </div>
+          </div>
+          <ol className="top-breeds-list">
+            {topBreedsCut.map((breed, index) => {
+              const max = topBreedsCut[0]?.count || 1
+              const width = Math.max(12, Math.round((breed.count / max) * 100))
+              return (
+                <li
+                  key={breed.name}
+                  className="top-breeds-row"
+                  style={{ '--breed-i': index, '--breed-bar': `${width}%` } as CSSProperties}
+                >
+                  <span className="top-breeds-rank" aria-hidden>
+                    {index + 1}
+                  </span>
+                  <div className="top-breeds-meta">
+                    <span className="top-breeds-name">{breed.name}</span>
+                    <span className="top-breeds-bar" aria-hidden />
+                  </div>
+                  <span className="top-breeds-count">{breed.count}</span>
+                </li>
+              )
+            })}
+          </ol>
+        </aside>
       </div>
     </section>
   )
