@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { BlogSection } from '@/components/BlogSection'
 import { CtaBand } from '@/components/CtaBand'
 import { Gallery } from '@/components/Gallery'
 import { Hero } from '@/components/Hero'
@@ -9,6 +10,7 @@ import { ServiceAreaMap } from '@/components/ServiceAreaMap'
 import { ServiceCard } from '@/components/ServiceCard'
 import { StatsBand } from '@/components/StatsBand'
 import { Testimonials } from '@/components/Testimonials'
+import { getRecentBlogPosts } from '@/lib/blog'
 import { googleReviews } from '@/lib/reviews'
 import { getPageContent } from '@/lib/notion'
 import { findPhoto, listGalleryItems } from '@/lib/photos'
@@ -20,10 +22,11 @@ const fallbackHeroPhoto =
 export const revalidate = 300
 
 export default async function HomePage() {
-  const { site, services } = await getPageContent()
+  const { site, services, posts } = await getPageContent()
   const packages = services.filter((service) => service.category === 'package')
   const highlighted = packages.filter((service) => service.featured)
   const shown = (highlighted.length > 0 ? highlighted : packages).slice(0, 3)
+  const recentPosts = getRecentBlogPosts(posts, 3)
 
   return (
     <PageShell>
@@ -62,6 +65,9 @@ export default async function HomePage() {
 
       <Reveal from="up" delayMs={40}>
         <Gallery items={listGalleryItems()} />
+      </Reveal>
+      <Reveal from="left" delayMs={40}>
+        <BlogSection posts={recentPosts} />
       </Reveal>
       <Reveal from="left" delayMs={40}>
         <Testimonials testimonials={googleReviews} />

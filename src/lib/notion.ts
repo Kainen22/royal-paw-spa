@@ -1,7 +1,8 @@
 import { Client } from '@notionhq/client'
 import { cache } from 'react'
+import { defaultBlogPosts } from './blog-posts'
 import { defaultFaqs, defaultServices, defaultSiteContent } from './content'
-import type { FAQ, PageContent, Service, SiteContent } from './types'
+import type { BlogPost, FAQ, PageContent, Service, SiteContent } from './types'
 
 function getNotionClient() {
   const token = process.env.NOTION_TOKEN
@@ -48,6 +49,20 @@ function getPropertyCheckbox(properties: Record<string, unknown>, key: string) {
   const prop = properties[key] as { type: string; checkbox?: boolean } | undefined
   if (!prop || prop.type !== 'checkbox') return false
   return prop.checkbox ?? false
+}
+
+function getPropertyDate(properties: Record<string, unknown>, key: string) {
+  const prop = properties[key] as { type: string; date?: { start?: string | null } | null } | undefined
+  if (!prop || prop.type !== 'date') return ''
+  return prop.date?.start?.slice(0, 10) ?? ''
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
 }
 
 async function queryDatabase(notion: Client, databaseId: string) {
@@ -130,10 +145,41 @@ async function fetchFaqs(notion: Client): Promise<FAQ[] | null> {
   return faqs.length > 0 ? faqs : null
 }
 
+async function fetchBlogPosts(notion: Client): Promise<BlogPost[] | null> {
+  const databaseId = process.env.NOTION_BLOG_DATABASE_ID
+  if (!databaseId) return null
+
+  const pages = await queryDatabase(notion, databaseId)
+
+  const posts = pages
+    .filter((page): page is typeof page & { properties: Record<string, unknown> } => 'properties' in page)
+    .map((page): BlogPost => {
+      const title = getPropertyText(page.properties, 'Title') || getPropertyText(page.properties, 'Name')
+      const slug = getPropertyText(page.properties, 'Slug') || slugify(title)
+      const publishedProp = page.properties['Published'] as { type?: string } | undefined
+      const published =
+        publishedProp?.type === 'checkbox' ? getPropertyCheckbox(page.properties, 'Published') : true
+
+      return {
+        id: page.id,
+        slug,
+        title,
+        excerpt: getPropertyText(page.properties, 'Excerpt'),
+        body: getPropertyText(page.properties, 'Body'),
+        date: getPropertyDate(page.properties, 'Date') || new Date().toISOString().slice(0, 10),
+        published,
+      }
+    })
+    .filter((post) => post.title.length > 0 && post.slug.length > 0)
+
+  return posts.length > 0 ? posts : null
+}
+
 const fallbackContent: PageContent = {
   site: defaultSiteContent,
   services: defaultServices,
   faqs: defaultFaqs,
+  posts: defaultBlogPosts,
   notionConnected: false,
 }
 
@@ -142,17 +188,19 @@ export const getPageContent = cache(async (): Promise<PageContent> => {
   if (!notion) return fallbackContent
 
   try {
-    const [site, services, faqs] = await Promise.all([
+    const [site, services, faqs, posts] = await Promise.all([
       fetchSiteContent(notion),
       fetchServices(notion),
       fetchFaqs(notion),
+      fetchBlogPosts(notion),
     ])
 
     return {
       site: site ?? defaultSiteContent,
       services: services ?? defaultServices,
       faqs: faqs ?? defaultFaqs,
-      notionConnected: Boolean(site || services || faqs),
+      posts: posts ?? defaultBlogPosts,
+      notionConnected: Boolean(site || services || faqs || posts),
     }
   } catch (error) {
     console.error('Notion fetch failed, using defaults:', error)

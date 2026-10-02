@@ -35,6 +35,16 @@ export type FAQ = {
   order: number
 }
 
+export type BlogPost = {
+  id: string
+  slug: string
+  title: string
+  excerpt: string
+  body: string
+  date: string
+  published: boolean
+}
+
 export type ReviewSource = 'google' | 'moego'
 
 export type Testimonial = {
@@ -49,5 +59,6 @@ export type PageContent = {
   site: SiteContent
   services: Service[]
   faqs: FAQ[]
+  posts: BlogPost[]
   notionConnected: boolean
 }
