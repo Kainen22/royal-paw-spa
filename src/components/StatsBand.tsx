@@ -16,25 +16,24 @@ function parseStatValue(raw: string) {
   }
 }
 
-function useInView(once = true) {
+function useInViewToggle() {
   const ref = useRef<HTMLElement | null>(null)
   const [inView, setInView] = useState(false)
 
   useEffect(() => {
     const node = ref.current
     if (!node) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInView(true)
+      return
+    }
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true)
-          if (once) observer.disconnect()
-        }
-      },
-      { threshold: 0.35 },
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: [0, 0.2, 0.35], rootMargin: '-8% 0px -12% 0px' },
     )
     observer.observe(node)
     return () => observer.disconnect()
-  }, [once])
+  }, [])
 
   return { ref, inView }
 }
@@ -49,17 +48,21 @@ function AnimatedStatValue({
   active: boolean
 }) {
   const parsed = parseStatValue(value)
-  const [display, setDisplay] = useState(parsed.decimals ? '0.0' : '0')
+  const zero = parsed.decimals ? (0).toFixed(parsed.decimals) : '0'
+  const [display, setDisplay] = useState(zero)
 
   useEffect(() => {
-    if (!active) return
+    if (!active) {
+      setDisplay(zero)
+      return
+    }
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduceMotion) {
       setDisplay(parsed.decimals ? parsed.target.toFixed(parsed.decimals) : String(parsed.target))
       return
     }
 
-    const duration = 1100
+    const duration = 1000
     const start = performance.now()
     let frame = 0
 
@@ -75,7 +78,7 @@ function AnimatedStatValue({
 
     frame = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(frame)
-  }, [active, parsed.decimals, parsed.target])
+  }, [active, parsed.decimals, parsed.target, zero])
 
   return (
     <p className="stat-value">
@@ -87,13 +90,13 @@ function AnimatedStatValue({
 }
 
 export function StatsBand() {
-  const { ref, inView } = useInView()
+  const { ref, inView } = useInViewToggle()
 
   return (
     <section className="stats-shell" ref={ref} aria-label="Business stats">
       <div className="section container">
         <div className={`stats-band${inView ? ' is-visible' : ''}`}>
-          <div className="stats-intro">
+          <div className={`stats-intro reveal reveal-left${inView ? ' is-inview' : ''}`}>
             <p className="eyebrow">The numbers</p>
             <h2>A spa people stay with</h2>
             <p className="stats-copy">

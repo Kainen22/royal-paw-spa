@@ -1,5 +1,7 @@
+'use client'
+
 import Link from 'next/link'
-import type { CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Icon } from '@/components/Icon'
 import { routes } from '@/lib/routes'
 import { toTelHref } from '@/lib/site'
@@ -17,8 +19,26 @@ const highlights = [
 ] as const
 
 export function Hero({ content, photo }: HeroProps) {
+  const ref = useRef<HTMLElement | null>(null)
+  const [inView, setInView] = useState(true)
+
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInView(true)
+      return
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: [0, 0.15, 0.35], rootMargin: '-6% 0px -10% 0px' },
+    )
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="hero container">
+    <section className={`hero container${inView ? ' is-inview' : ''}`} ref={ref}>
       <span className="hero-watermark" aria-hidden>
         Spa
       </span>

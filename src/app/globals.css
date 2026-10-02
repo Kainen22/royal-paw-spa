@@ -422,35 +422,37 @@ p {
   box-shadow: var(--shadow-border);
 }
 
-/* Scroll reveals — Mobile Pet Shine / Wix-style soft entrances */
+/* Scroll reveals — slide in when entering, slide out when leaving (every pass) */
 .reveal {
   opacity: 0;
   will-change: opacity, transform;
   transition:
-    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
+    opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0ms; /* exit immediately when leaving viewport */
 }
 
 .reveal-up {
-  transform: translate3d(0, 36px, 0);
+  transform: translate3d(0, 48px, 0);
 }
 
 .reveal-left {
-  transform: translate3d(-28px, 0, 0);
+  transform: translate3d(-56px, 16px, 0);
 }
 
 .reveal-right {
-  transform: translate3d(28px, 0, 0);
+  transform: translate3d(56px, 16px, 0);
 }
 
 .reveal-zoom {
-  transform: translate3d(0, 18px, 0) scale(0.97);
+  transform: translate3d(0, 28px, 0) scale(0.94);
 }
 
 .reveal.is-inview {
   opacity: 1;
   transform: none;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
 /* Hero */
@@ -497,16 +499,26 @@ p {
 
 .hero-enter {
   opacity: 0;
-  transform: translate3d(0, 22px, 0);
-  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: calc(120ms + var(--hero-i, 0) * 110ms);
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0ms;
 }
 
-@keyframes hero-rise {
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.hero-media.hero-enter {
+  transform: translate3d(40px, 16px, 0);
+}
+
+.hero.is-inview .hero-enter {
+  opacity: 1;
+  transform: none;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(80ms + var(--hero-i, 0) * 90ms);
+}
+
+.hero.is-inview .hero-media.hero-enter {
+  transition-delay: 140ms;
 }
 
 .hero-copy .lead {
@@ -697,17 +709,19 @@ p {
   padding: 1.5rem 1.15rem 1.25rem;
   text-align: center;
   opacity: 0;
-  transform: translateY(14px);
+  transform: translate3d(0, 28px, 0);
   transition:
-    opacity 0.55s ease,
-    transform 0.55s ease,
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.2s ease;
-  transition-delay: calc(var(--stat-i, 0) * 90ms);
+  transition-delay: 0ms;
 }
 
 .stats-band.is-visible .stat-card {
   opacity: 1;
   transform: none;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(90ms + var(--stat-i, 0) * 80ms);
 }
 
 .stat-card:hover {

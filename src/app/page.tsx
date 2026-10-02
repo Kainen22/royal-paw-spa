@@ -33,7 +33,7 @@ export default async function HomePage() {
         <HowItWorks />
       </Reveal>
 
-      <Reveal as="section" className="section container" from="up" delayMs={60}>
+      <Reveal as="section" className="section container" from="left" delayMs={40}>
         <div className="section-head section-head-row">
           <div>
             <p className="eyebrow">Services</p>
@@ -45,21 +45,25 @@ export default async function HomePage() {
         </div>
         <div className="grid-3">
           {shown.map((service, index) => (
-            <Reveal key={service.id} from="up" delayMs={80 + index * 70}>
+            <Reveal
+              key={service.id}
+              from={index % 2 === 0 ? 'left' : 'right'}
+              delayMs={60 + index * 70}
+            >
               <ServiceCard service={service} compact />
             </Reveal>
           ))}
         </div>
       </Reveal>
 
-      <Reveal from="up" delayMs={40}>
+      <Reveal from="right" delayMs={40}>
         <ServiceAreaMap />
       </Reveal>
 
       <Reveal from="up" delayMs={40}>
         <Gallery items={listGalleryItems()} />
       </Reveal>
-      <Reveal from="up" delayMs={40}>
+      <Reveal from="left" delayMs={40}>
         <Testimonials testimonials={googleReviews} />
       </Reveal>
       <Reveal from="zoom" delayMs={40}>
