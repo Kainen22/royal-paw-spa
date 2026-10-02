@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { revealObserverOptions } from '@/lib/motion'
+import { afterPaint, isElementInViewport, revealObserverOptions } from '@/lib/motion'
 import { businessStats } from '@/lib/stats'
 import { googleRating } from '@/lib/reviews'
 
@@ -28,12 +28,32 @@ function useInViewToggle() {
       setInView(true)
       return
     }
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      revealObserverOptions(),
-    )
+
+    let cancelled = false
+    const show = () => {
+      if (cancelled) return
+      afterPaint(() => {
+        if (!cancelled) setInView(true)
+      })
+    }
+    const hide = () => {
+      if (!cancelled) setInView(false)
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) show()
+      else hide()
+    }, revealObserverOptions())
     observer.observe(node)
-    return () => observer.disconnect()
+
+    afterPaint(() => {
+      if (!cancelled && isElementInViewport(node)) show()
+    })
+
+    return () => {
+      cancelled = true
+      observer.disconnect()
+    }
   }, [])
 
   return { ref, inView }

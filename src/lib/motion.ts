@@ -1,4 +1,4 @@
-/** Shared scroll-motion helpers — tuned separately for phone vs desktop. */
+/** Shared scroll-motion helpers — tuned for iPhone Safari + desktop. */
 
 export function prefersReducedMotion() {
   if (typeof window === 'undefined') return false
@@ -10,19 +10,22 @@ export function isCompactViewport() {
   return window.matchMedia('(max-width: 900px)').matches
 }
 
-/** IntersectionObserver options that avoid flicker on short phone viewports. */
+/**
+ * IntersectionObserver options.
+ * Use pixel rootMargin (not %) — percentage margins are flaky on iOS Safari.
+ */
 export function revealObserverOptions(): IntersectionObserverInit {
   if (isCompactViewport()) {
     return {
-      threshold: [0, 0.06, 0.18],
-      // Gentler inset so sections don't ping-pong in/out behind the tab bar
-      rootMargin: '0px 0px -4% 0px',
+      threshold: [0, 0.05, 0.15],
+      // Leave room for the sticky tab bar without percentage quirks
+      rootMargin: '0px 0px -48px 0px',
     }
   }
 
   return {
     threshold: [0, 0.12, 0.28],
-    rootMargin: '-8% 0px -12% 0px',
+    rootMargin: '-64px 0px -96px 0px',
   }
 }
 
@@ -30,4 +33,22 @@ export function revealObserverOptions(): IntersectionObserverInit {
 export function mobileRevealDelay(delayMs: number) {
   if (!isCompactViewport()) return delayMs
   return Math.min(delayMs, 80)
+}
+
+/**
+ * Ensure the browser paints the "hidden" styles before flipping to inview,
+ * otherwise iOS Safari often skips the CSS transition entirely.
+ */
+export function afterPaint(callback: () => void) {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(callback)
+  })
+}
+
+/** True when any part of the element is in the viewport (IO fallback). */
+export function isElementInViewport(node: Element) {
+  const rect = node.getBoundingClientRect()
+  const vh = window.innerHeight || document.documentElement.clientHeight
+  const vw = window.innerWidth || document.documentElement.clientWidth
+  return rect.bottom > 0 && rect.right > 0 && rect.top < vh && rect.left < vw
 }
