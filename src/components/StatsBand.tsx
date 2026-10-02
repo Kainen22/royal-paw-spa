@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { revealObserverOptions } from '@/lib/motion'
 import { businessStats } from '@/lib/stats'
 import { googleRating } from '@/lib/reviews'
 
@@ -29,7 +30,7 @@ function useInViewToggle() {
     }
     const observer = new IntersectionObserver(
       ([entry]) => setInView(entry.isIntersecting),
-      { threshold: [0, 0.2, 0.35], rootMargin: '-8% 0px -12% 0px' },
+      revealObserverOptions(),
     )
     observer.observe(node)
     return () => observer.disconnect()

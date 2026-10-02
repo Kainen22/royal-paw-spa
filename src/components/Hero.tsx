@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Icon } from '@/components/Icon'
+import { revealObserverOptions } from '@/lib/motion'
 import { routes } from '@/lib/routes'
 import { toTelHref } from '@/lib/site'
 import type { SiteContent } from '@/lib/types'
@@ -31,7 +32,7 @@ export function Hero({ content, photo }: HeroProps) {
     }
     const observer = new IntersectionObserver(
       ([entry]) => setInView(entry.isIntersecting),
-      { threshold: [0, 0.15, 0.35], rootMargin: '-6% 0px -10% 0px' },
+      revealObserverOptions(),
     )
     observer.observe(node)
     return () => observer.disconnect()
