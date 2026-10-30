@@ -1,0 +1,29 @@
+---
+description: RenterMatch product context for agents
+globs:
+alwaysApply: true
+---
+
+# RenterMatch
+
+Standalone two-sided lead marketplace. Not related to Royal Paw Spa or any other product.
+
+## Product
+
+- Demand: renters with thin/no/low credit, recent credit issues, weak rental history, or nontraditional income docs
+- Supply: apartment communities willing to work with those applicants
+- First market: Denver metro
+- Monetization experiments: qualified lead, scheduled tour, lease placement (prefer placement when operators will pay)
+
+## Hard constraints
+
+- Do not promise approval or make tenant-screening decisions
+- No credit pulls in the MVP intake
+- Keep Fair Housing / equal opportunity disclaimers visible
+- Treat licensing, FCRA, and privacy as open legal review items — do not invent compliance claims
+
+## Stack
+
+- Next.js App Router + TypeScript
+- Leads: `POST /api/leads` → `data/leads.json` (gitignored)
+- Local: `npm install && npm run dev` → http://localhost:3000
