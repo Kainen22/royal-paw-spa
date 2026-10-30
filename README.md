@@ -10,12 +10,13 @@ Two-sided lead marketplace matching renters with qualification barriers to apart
 ## MVP scope
 
 - Renter landing page (Denver metro first)
-- Intake form (budget, location, income, self-reported credit, needs)
+- Browseable property listings with screening-flexibility tags
+- Intake form (budget, location, income, self-reported credit, needs; can preference a listing)
 - Property-partner interest page
 - Lead capture API (stores submissions locally for early sales calls)
 - Fair Housing / no-guarantee disclaimers
 
-Not included yet: credit pulls, automated screening decisions, broker tooling, multi-market scale.
+Not included yet: live PMS inventory sync, credit pulls, automated screening decisions, broker tooling, multi-market scale.
 
 ## Local
 

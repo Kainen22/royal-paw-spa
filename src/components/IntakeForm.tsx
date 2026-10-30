@@ -2,14 +2,25 @@
 
 import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { getListing } from '@/lib/listings'
 import { creditProfiles, denverAreas, incomeTypes } from '@/lib/site'
 
 type Status = 'idle' | 'submitting' | 'error'
 
-export function IntakeForm() {
+type IntakeFormProps = {
+  preferredListingId?: string
+  preferredArea?: string
+}
+
+export function IntakeForm({ preferredListingId, preferredArea }: IntakeFormProps) {
   const router = useRouter()
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
+  const preferredListing = preferredListingId ? getListing(preferredListingId) : undefined
+  const defaultArea =
+    preferredArea && denverAreas.includes(preferredArea as (typeof denverAreas)[number])
+      ? preferredArea
+      : preferredListing?.area || ''
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -24,7 +35,12 @@ export function IntakeForm() {
       const res = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...payload, source: 'renter-intake' }),
+        body: JSON.stringify({
+          ...payload,
+          source: 'renter-intake',
+          preferredListingId: preferredListing?.id || '',
+          preferredListingName: preferredListing?.name || '',
+        }),
       })
 
       if (!res.ok) {
@@ -41,6 +57,12 @@ export function IntakeForm() {
 
   return (
     <form className="form-shell" onSubmit={onSubmit}>
+      {preferredListing ? (
+        <div className="alert alert-ok">
+          Preferencing <strong>{preferredListing.name}</strong> ({preferredListing.area}). We’ll
+          include that when we intro you — and can still suggest similar communities.
+        </div>
+      ) : null}
       {status === 'error' ? <div className="alert alert-error">{error}</div> : null}
 
       <div className="form-grid two">
@@ -68,7 +90,7 @@ export function IntakeForm() {
       <div className="form-grid two" style={{ marginTop: '1rem' }}>
         <label>
           Preferred area
-          <select name="area" required defaultValue="">
+          <select name="area" required defaultValue={defaultArea}>
             <option value="" disabled>
               Select area
             </option>
@@ -104,6 +126,7 @@ export function IntakeForm() {
             step={50}
             required
             placeholder="e.g. 1600"
+            defaultValue={preferredListing ? String(preferredListing.rentMax) : undefined}
           />
         </label>
         <label>
@@ -149,7 +172,11 @@ export function IntakeForm() {
         </label>
         <label>
           Beds needed
-          <select name="beds" required defaultValue="">
+          <select
+            name="beds"
+            required
+            defaultValue={preferredListing?.beds[0] || ''}
+          >
             <option value="" disabled>
               Select beds
             </option>
@@ -165,6 +192,9 @@ export function IntakeForm() {
             name="notes"
             rows={4}
             placeholder="Pets, cosigner available, prior eviction, preferred neighborhoods…"
+            defaultValue={
+              preferredListing ? `Interested in ${preferredListing.name}.` : undefined
+            }
           />
         </label>
       </div>

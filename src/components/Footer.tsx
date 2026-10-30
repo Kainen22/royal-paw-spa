@@ -15,6 +15,7 @@ export function Footer() {
           </p>
         </div>
         <nav aria-label="Footer">
+          <Link href="/listings">Listings</Link>
           <Link href="/apply">Renter intake</Link>
           <Link href="/partners">Apartment partners</Link>
           <a href={`mailto:${site.email}`}>{site.email}</a>

@@ -9,7 +9,16 @@ export const metadata: Metadata = {
   description: `Free ${site.market} intake for renters with credit or qualification barriers.`,
 }
 
-export default function ApplyPage() {
+type SearchParams = Promise<Record<string, string | string[] | undefined>>
+
+function first(value: string | string[] | undefined): string | undefined {
+  if (Array.isArray(value)) return value[0]
+  return value
+}
+
+export default async function ApplyPage({ searchParams }: { searchParams: SearchParams }) {
+  const params = await searchParams
+
   return (
     <>
       <Header tone="dark" />
@@ -25,7 +34,10 @@ export default function ApplyPage() {
           </div>
         </section>
         <div className="container">
-          <IntakeForm />
+          <IntakeForm
+            preferredListingId={first(params.listing)}
+            preferredArea={first(params.area)}
+          />
           <p className="disclaimer" style={{ marginBottom: '3rem' }}>
             Submitting this form is not a rental application and does not guarantee housing.
             You consent to share your details with interested apartment partners only.

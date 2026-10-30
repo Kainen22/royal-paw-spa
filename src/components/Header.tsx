@@ -17,8 +17,8 @@ export function Header({ tone = 'light' }: HeaderProps) {
           <span style={tone === 'dark' ? { color: 'var(--sage)' } : undefined}>.</span>
         </Link>
         <nav className="nav" aria-label="Primary">
-          <Link href="/#how" style={linkColor}>
-            How it works
+          <Link href="/listings" style={linkColor}>
+            Listings
           </Link>
           <Link href="/partners" style={linkColor}>
             For apartments

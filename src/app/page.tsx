@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { ListingCard } from '@/components/ListingCard'
+import { listings } from '@/lib/listings'
 import { site } from '@/lib/site'
 
 const heroImage =
@@ -34,8 +36,8 @@ export default function HomePage() {
               <Link className="btn btn-primary" href="/apply">
                 Start free intake
               </Link>
-              <Link className="btn btn-secondary" href="/partners">
-                Apartment partners
+              <Link className="btn btn-secondary" href="/listings">
+                Browse listings
               </Link>
             </div>
           </div>
@@ -60,10 +62,10 @@ export default function HomePage() {
                 </p>
               </article>
               <article className="step">
-                <h3>We match with consent</h3>
+                <h3>Browse or get matched</h3>
                 <p>
-                  Your lead goes only to {site.market} communities that work with applicants like
-                  you.
+                  See partner listings with screening-fit tags, or let us intro you — with consent —
+                  to communities that work with applicants like you.
                 </p>
               </article>
               <article className="step">
@@ -73,6 +75,29 @@ export default function HomePage() {
                   applications.
                 </p>
               </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" style={{ paddingTop: 0 }} id="listings">
+          <div className="container">
+            <div className="section-head section-head-row">
+              <div>
+                <p className="eyebrow">Open communities</p>
+                <h2>Listings from properties that work with this population.</h2>
+                <p>
+                  Browse {site.market} communities with flexible, thin-file, or second-chance
+                  screening notes — then request an intro instead of spraying applications.
+                </p>
+              </div>
+              <Link className="text-link" href="/listings">
+                See all {listings.length} listings →
+              </Link>
+            </div>
+            <div className="listings-grid">
+              {listings.slice(0, 3).map((listing) => (
+                <ListingCard key={listing.id} listing={listing} />
+              ))}
             </div>
           </div>
         </section>
