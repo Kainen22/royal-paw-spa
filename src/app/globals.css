@@ -780,13 +780,14 @@ textarea:focus {
 
 .listing-map-marker-dot {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   margin: 5px;
   border-radius: 999px;
   background: var(--ember);
-  border: 2px solid #fff;
+  border: 3px solid #fff;
   box-shadow: 0 4px 14px rgba(21, 32, 25, 0.35);
+  cursor: pointer;
 }
 
 .leaflet-container {

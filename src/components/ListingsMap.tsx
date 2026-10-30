@@ -67,10 +67,9 @@ export function ListingsMap({ listings }: ListingsMapProps) {
           zoomControl: true,
         }).setView([denverMapCenter.lat, denverMapCenter.lng], 11)
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-          subdomains: 'abcd',
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           maxZoom: 19,
         }).addTo(mapRef.current)
 
@@ -89,10 +88,10 @@ export function ListingsMap({ listings }: ListingsMapProps) {
 
       const icon = L.divIcon({
         className: 'listing-map-marker',
-        html: '<span class="listing-map-marker-dot"></span>',
-        iconSize: [28, 28],
-        iconAnchor: [14, 14],
-        popupAnchor: [0, -12],
+        html: '<span class="listing-map-marker-dot" aria-hidden="true"></span>',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -14],
       })
 
       const bounds: [number, number][] = []
