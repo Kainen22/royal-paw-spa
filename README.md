@@ -1,5 +1,7 @@
 # RenterMatch
 
+**Standalone product** — its own GitHub repo, Cursor project, and Cloud Agent environment. Not part of Royal Paw Spa or any other codebase.
+
 Two-sided lead marketplace matching renters with qualification barriers to apartment communities willing to work with them.
 
 **Initial niche:** thin file / no credit / limited credit / recent credit issues / nontraditional income.  
