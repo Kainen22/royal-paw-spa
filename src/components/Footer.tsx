@@ -1,42 +1,31 @@
 import Link from 'next/link'
-import { SocialLinks } from '@/components/SocialLinks'
-import { navLinks } from '@/lib/routes'
-import { getSiteName, toTelHref } from '@/lib/site'
-import type { SiteContent } from '@/lib/types'
+import { site } from '@/lib/site'
 
-type FooterProps = {
-  site: SiteContent
-  notionConnected: boolean
-}
-
-export function Footer({ site, notionConnected }: FooterProps) {
-  const siteName = getSiteName()
-
+export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="container footer-inner">
-        <div className="footer-brand">
-          <strong>{siteName}</strong>
-          <p>Mobile dog grooming · {site.serviceArea}</p>
-          <SocialLinks />
+      <div className="container">
+        <div>
+          <Link className="logo" href="/">
+            {site.name}
+            <span>.</span>
+          </Link>
+          <p style={{ margin: '0.55rem 0 0', maxWidth: '36ch' }}>
+            Matching {site.market} renters with communities open to nontraditional applications.
+          </p>
         </div>
-        <nav className="footer-links" aria-label="Footer">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
+        <nav aria-label="Footer">
+          <Link href="/apply">Renter intake</Link>
+          <Link href="/partners">Apartment partners</Link>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
         </nav>
-        <div className="footer-contact">
-          <a href={toTelHref(site.contactPhone)}>{site.contactPhone}</a>
-          <span>{site.hours}</span>
-        </div>
       </div>
-      <div className="container footer-bottom">
-        <span>
-          &copy; {new Date().getFullYear()} {siteName}
-        </span>
-        {notionConnected && <span className="muted-badge">Content from Notion</span>}
+      <div className="container" style={{ marginTop: '1.5rem', display: 'block' }}>
+        <p className="form-note" style={{ maxWidth: '70ch' }}>
+          {site.name} is a referral marketplace. We do not pull credit, approve applications, or
+          make housing decisions. Apartment communities set their own screening criteria. Equal
+          housing opportunity.
+        </p>
       </div>
     </footer>
   )

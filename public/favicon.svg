@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="6" fill="#7851A9"/>
-  <path d="M8 20c0-2 1.5-4 4-4s4 2 4 4v2H8v-2zm12 0c0-2 1.5-4 4-4s4 2 4 4v2h-8v-2zM12 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm8 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill="#fff"/>
-  <ellipse cx="16" cy="22" rx="6" ry="4" fill="#9370DB"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#152019"/>
+  <path d="M18 40V26l14-10 14 10v14h-8V32H26v8h-8z" fill="#6f8f78"/>
+  <circle cx="32" cy="44" r="4" fill="#c45c26"/>
 </svg>

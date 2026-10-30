@@ -1,6 +1,19 @@
-# Royal Paw Spa
+# RenterMatch
 
-Mobile dog grooming site for Royal Paw Spa. Built with Next.js, with Notion-ready content and Moego booking.
+Two-sided lead marketplace matching renters with qualification barriers to apartment communities willing to work with them.
+
+**Initial niche:** thin file / no credit / limited credit / recent credit issues / nontraditional income.  
+**Long-term brand:** broader alternative-housing marketplace for any barrier to qualifying.
+
+## MVP scope
+
+- Renter landing page (Denver metro first)
+- Intake form (budget, location, income, self-reported credit, needs)
+- Property-partner interest page
+- Lead capture API (stores submissions locally for early sales calls)
+- Fair Housing / no-guarantee disclaimers
+
+Not included yet: credit pulls, automated screening decisions, broker tooling, multi-market scale.
 
 ## Local
 
@@ -12,30 +25,18 @@ npm run dev
 
 Open http://localhost:3000
 
-## Photos
+Leads land in `data/leads.json` (gitignored). Review them while you build apartment relationships by hand.
 
-Drop images in `public/photos`:
+## Revenue experiments
 
-- `hero.jpg` — home page cover
-- `about.jpg` — About page
-- `gallery/` — Recent grooms
-
-## Version history
-
-Every save is already on GitHub. Named checkpoints:
-
-| Tag | What it is |
+| Model | Test pricing |
 | --- | --- |
-| `v1.0-launch` | First live site — lavender template, Moego, photos |
-| `v2.0-van-brand` | Cream, gold, Fraunces restyle (kept if we want it later) |
-| `v2.1-back-to-launch` | Current live look — same as v1, after reverting the restyle |
+| Qualified renter lead | $15–$40 |
+| Scheduled property tour | $30–$75 |
+| Successful lease placement | $150–$400+ |
 
-See them on GitHub: [releases / tags](https://github.com/Kainen22/royal-paw-spa/tags)
+Prefer lease-placement when operators will pay — incentives align.
 
-To put the live site back on a checkpoint, tell me which tag and I can revert it. Or locally:
+## Compliance note
 
-```bash
-git checkout v1.0-launch
-```
-
-That only looks at the old files. To change the live site, tell me which tag — we revert with a new commit so nothing is lost.
+Do not promise approval. Do not independently make tenant-screening decisions. Review Fair Housing, FCRA/credit-report rules, privacy law, and state apartment referral / broker licensing before charging for placements.

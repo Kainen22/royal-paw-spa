@@ -1,45 +1,43 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
-import { PawCursor } from '@/components/PawCursor'
-import { getSiteName } from '@/lib/site'
+import { Figtree, Syne } from 'next/font/google'
+import { site } from '@/lib/site'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  weight: ['600', '700', '800'],
+})
 
-const siteName = getSiteName()
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://royal-paw-spa.vercel.app'
+const figtree = Figtree({
+  subsets: ['latin'],
+  variable: '--font-figtree',
+  weight: ['400', '500', '600', '700'],
+})
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteName} | Mobile Dog Grooming`,
-    template: `%s | ${siteName}`,
+    default: `${site.name} | Apartments for challenged credit`,
+    template: `%s | ${site.name}`,
   },
   description:
-    'Mobile dog grooming at your door. Baths, haircuts, nail trims, and spa add-ons in a fully equipped van. Book online.',
-  metadataBase: new URL(siteUrl),
+    'Free matching for Denver metro renters with thin credit, no credit, or other qualification barriers — connected to communities willing to consider your application.',
+  metadataBase: new URL(site.url),
   icons: {
-    icon: [
-      { url: '/favicon.png', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-48.png', type: 'image/png', sizes: '48x48' },
-    ],
-    apple: '/apple-touch-icon.png',
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#ffffff',
+  themeColor: '#152019',
   width: 'device-width',
   initialScale: 1,
-  viewportFit: 'cover',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body>
-        <PawCursor />
-        {children}
-      </body>
+    <html lang="en" className={`${syne.variable} ${figtree.variable}`}>
+      <body>{children}</body>
     </html>
   )
 }
