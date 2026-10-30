@@ -11,6 +11,7 @@ Two-sided lead marketplace matching renters with qualification barriers to apart
 
 - Renter landing page (Denver metro first)
 - Browseable property listings with screening-flexibility tags
+- Denver metro map with pin popups (rent, screening fit, intro CTA)
 - Intake form (budget, location, income, self-reported credit, needs; can preference a listing)
 - Property-partner interest page
 - Lead capture API (stores submissions locally for early sales calls)

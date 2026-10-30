@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { ListingsFilters } from '@/components/ListingsFilters'
 import { ListingsGrid } from '@/components/ListingsGrid'
+import { ListingsMap } from '@/components/ListingsMap'
 import {
   filterListings,
   listings,
@@ -44,9 +45,8 @@ export default async function ListingsPage({ searchParams }: { searchParams: Sea
             <p className="eyebrow">Browse communities</p>
             <h1>Properties that may consider your situation.</h1>
             <p style={{ maxWidth: '48ch', color: 'var(--ink-soft)' }}>
-              Seed directory of {listings.length} {site.market} communities with flexible or
-              second-chance screening notes. Listing here is not an approval — each property still
-              decides.
+              Explore the {site.market} map, click a pin for screening fit, then request an intro —
+              or browse the list below. Listing here is not an approval.
             </p>
           </div>
         </section>
@@ -55,14 +55,19 @@ export default async function ListingsPage({ searchParams }: { searchParams: Sea
           <div className="container">
             <ListingsFilters filters={filters} />
             <p className="form-note" style={{ margin: '1rem 0 1.25rem' }}>
-              Showing {results.length} of {listings.length} communities.{' '}
+              Showing {results.length} of {listings.length} communities on the map.{' '}
               <Link href="/apply">Get matched</Link> if you want us to intro you directly.
             </p>
+            <ListingsMap listings={results} />
+            <div className="section-head" style={{ marginTop: '2.5rem', marginBottom: '1rem' }}>
+              <p className="eyebrow">List view</p>
+              <h2 style={{ fontSize: '1.55rem' }}>Same communities, as cards</h2>
+            </div>
             <ListingsGrid listings={results} />
             <p className="disclaimer" style={{ marginTop: '2.5rem' }}>
               Screening notes are based on partner conversations and published policies for this MVP
-              seed set. Criteria change. {site.name} does not pull credit or approve applications.
-              Equal housing opportunity.
+              seed set. Map pins are approximate. Criteria change. {site.name} does not pull credit
+              or approve applications. Equal housing opportunity.
             </p>
           </div>
         </section>

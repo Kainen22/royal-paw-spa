@@ -15,6 +15,9 @@ export type Listing = {
   name: string
   area: (typeof denverAreas)[number]
   neighborhood: string
+  /** Approximate map pin for MVP seed inventory (not surveyed survey pins). */
+  lat: number
+  lng: number
   rentMin: number
   rentMax: number
   beds: Array<'studio' | '1' | '2' | '3plus'>
@@ -38,12 +41,16 @@ export const flexibilityLabels: Record<FlexibilityTag, string> = {
   'guarantor-ok': 'Guarantor / deposit alt OK',
 }
 
+export const denverMapCenter = { lat: 39.7392, lng: -104.9903 } as const
+
 export const listings: Listing[] = [
   {
     id: 'aurora-ridge-flats',
     name: 'Aurora Ridge Flats',
     area: 'Aurora',
     neighborhood: 'Near Fitzsimons',
+    lat: 39.7458,
+    lng: -104.8362,
     rentMin: 1245,
     rentMax: 1895,
     beds: ['studio', '1', '2'],
@@ -62,6 +69,8 @@ export const listings: Listing[] = [
     name: 'Lakewood Station Lofts',
     area: 'Lakewood',
     neighborhood: 'Belmar / light rail',
+    lat: 39.7089,
+    lng: -105.0764,
     rentMin: 1395,
     rentMax: 2190,
     beds: ['1', '2'],
@@ -79,6 +88,8 @@ export const listings: Listing[] = [
     name: 'Commerce City Plaza',
     area: 'Commerce City',
     neighborhood: 'Prairie Gateway',
+    lat: 39.8254,
+    lng: -104.9012,
     rentMin: 1120,
     rentMax: 1680,
     beds: ['1', '2', '3plus'],
@@ -97,6 +108,8 @@ export const listings: Listing[] = [
     name: 'West Colfax Court',
     area: 'Denver (city)',
     neighborhood: 'West Colfax',
+    lat: 39.7403,
+    lng: -105.0438,
     rentMin: 1180,
     rentMax: 1750,
     beds: ['studio', '1', '2'],
@@ -114,6 +127,8 @@ export const listings: Listing[] = [
     name: 'Thornton Meadows',
     area: 'Thornton',
     neighborhood: 'Eastlake',
+    lat: 39.9286,
+    lng: -104.9531,
     rentMin: 1290,
     rentMax: 1995,
     beds: ['1', '2', '3plus'],
@@ -131,6 +146,8 @@ export const listings: Listing[] = [
     name: 'Englewood Grove',
     area: 'Englewood',
     neighborhood: 'Near Broadway',
+    lat: 39.6478,
+    lng: -104.9877,
     rentMin: 1325,
     rentMax: 2050,
     beds: ['studio', '1', '2'],
@@ -148,6 +165,8 @@ export const listings: Listing[] = [
     name: 'Arvada Creekside',
     area: 'Arvada',
     neighborhood: 'Olde Town adjacency',
+    lat: 39.8012,
+    lng: -105.0815,
     rentMin: 1410,
     rentMax: 2280,
     beds: ['1', '2'],
@@ -166,6 +185,8 @@ export const listings: Listing[] = [
     name: 'Westminster Park Villas',
     area: 'Westminster',
     neighborhood: 'Near Flatiron Crossing corridor',
+    lat: 39.8765,
+    lng: -105.0642,
     rentMin: 1350,
     rentMax: 2100,
     beds: ['1', '2', '3plus'],
@@ -183,6 +204,8 @@ export const listings: Listing[] = [
     name: 'Littleton Riverwalk',
     area: 'Littleton',
     neighborhood: 'Downtown Littleton',
+    lat: 39.6133,
+    lng: -105.0166,
     rentMin: 1450,
     rentMax: 2350,
     beds: ['1', '2'],
@@ -200,6 +223,8 @@ export const listings: Listing[] = [
     name: 'Centennial Oaks',
     area: 'Centennial',
     neighborhood: 'South I-25 corridor',
+    lat: 39.5801,
+    lng: -104.8771,
     rentMin: 1520,
     rentMax: 2480,
     beds: ['1', '2', '3plus'],
@@ -217,6 +242,8 @@ export const listings: Listing[] = [
     name: 'Five Points Row',
     area: 'Denver (city)',
     neighborhood: 'Five Points',
+    lat: 39.7545,
+    lng: -104.9772,
     rentMin: 1295,
     rentMax: 1925,
     beds: ['studio', '1'],
@@ -234,6 +261,8 @@ export const listings: Listing[] = [
     name: 'Second Key Aurora',
     area: 'Aurora',
     neighborhood: 'Iliff / Buckley corridor',
+    lat: 39.6748,
+    lng: -104.7885,
     rentMin: 1095,
     rentMax: 1595,
     beds: ['1', '2', '3plus'],
@@ -249,7 +278,6 @@ export const listings: Listing[] = [
   },
 ]
 
-// Fix Thornton listing - I used a hacky filter. Let me fix that in a follow-up edit.
 export function getListing(id: string): Listing | undefined {
   return listings.find((listing) => listing.id === id)
 }
