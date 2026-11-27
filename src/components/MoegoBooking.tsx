@@ -24,6 +24,7 @@ export function MoegoBooking() {
         title="Book a mobile grooming appointment"
         loading="lazy"
         allow="payment"
+        referrerPolicy="strict-origin-when-cross-origin"
       />
       <p className="booking-fallback">
         Booking not loading?{' '}
